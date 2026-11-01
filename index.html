@@ -1,0 +1,1984 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#091526" />
+  <meta name="description" content="Physical AI Academy — seven judo-belt levels for robotics, simulation and embodied intelligence." />
+  <title>Physical AI Academy · From robots to intelligence</title>
+  <style>
+:root{--navy:#081424;--navy2:#10223c;--ink:#162b43;--muted:#64758a;--light:#f4f7fb;--card:#fff;--line:#e5ebf2;--blue:#2466df;--teal:#16b5a3;--shadow:0 18px 58px rgba(12,35,65,.065);--sidebar:240px}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'DM Sans','Manrope',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:#f5f8fb}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.46}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #6aa1ff;outline-offset:3px}p{line-height:1.7}h1,h2,h3,h4{line-height:1.2;letter-spacing:-.035em;margin:0}h1{font-size:clamp(31px,4vw,52px);font-weight:800}h2{font-size:26px;font-weight:800}h3{font-size:19px;font-weight:800}h4{font-size:15px;font-weight:800}.muted{color:var(--muted)}.small{font-size:12px}.overline{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6995bd}.app-shell{display:flex;min-height:100vh}.sidebar{position:sticky;top:0;align-self:flex-start;height:100vh;background:var(--navy);width:var(--sidebar);flex:0 0 var(--sidebar);padding:28px 17px;display:flex;flex-direction:column;color:#b4c6da;z-index:9}.brand{padding:2px 12px 26px;display:flex;gap:12px;align-items:center}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid #2c5778;border-radius:13px;color:#4de5d2;background:#112b46}.brand-name{font-size:14px;font-weight:800;color:#fff;line-height:1.06;letter-spacing:.04em}.brand-sub{color:#70caca;font-size:10px;letter-spacing:.16em;font-weight:800;margin-top:5px}.nav-caption{font-size:10px;letter-spacing:.17em;color:#69859f;font-weight:800;padding:21px 14px 12px}.nav-item{display:flex;align-items:center;width:100%;gap:12px;padding:12px 13px;border:0;border-radius:11px;background:transparent;color:#aebcd0;text-align:left;font-size:13px;font-weight:700;margin:3px 0}.nav-item svg{width:17px;height:17px;flex-shrink:0}.nav-item:hover{background:#142941;color:#fff}.nav-item.active{background:#173351;color:#f6fffe;box-shadow:inset 3px 0 0 #34ddca}.nav-belt{height:11px;width:11px;border-radius:50%;border:1px solid #8095a7;margin-left:auto}.sidebar-bottom{margin-top:auto;border-top:1px solid #20334a;padding:20px 12px 0}.sidebar-bottom p{margin:7px 0;font-size:11px;line-height:1.65}.sidebar-bottom .progress{background:#29405a}.main{min-width:0;flex:1;padding:32px clamp(22px,4.2vw,68px) 70px;max-width:1700px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.topbar-left{display:flex;align-items:center;gap:12px}.top-title{font-size:13px;font-weight:800;letter-spacing:.01em}.top-sub{color:var(--muted);font-size:11px;margin-top:3px}.top-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #dce5ef;background:#fff;border-radius:99px;padding:9px 13px;font-size:11px;color:#465f78;font-weight:800}.chip b{font-size:11px}.button{border:0;border-radius:12px;padding:12px 17px;background:#e8edf5;color:#183554;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,background .15s}.button:hover{transform:translateY(-1px)}.button.primary{background:var(--blue);color:#fff;box-shadow:0 6px 22px #175ee433}.button.light{background:#fff;color:#173657}.button.dark{background:var(--navy);color:#fff}.button.outline{background:transparent;border:1px solid #dce5ef}.button.small-btn{padding:9px 12px;font-size:11px}.button.danger{background:#ffe7e9;color:#a52b44}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:34px 0 18px}.section-head p{font-size:12px;margin:7px 0 0;color:var(--muted)}.section-head h2{font-size:23px}.hero{min-height:338px;background:radial-gradient(ellipse at 73% 54%,#244e74 0,#112b47 35%,#081a31 70%);border-radius:22px;overflow:hidden;color:#fff;display:grid;grid-template-columns:1.16fr .84fr;position:relative;box-shadow:0 24px 60px #10294820}.hero:before{position:absolute;content:'';inset:0;background-image:linear-gradient(#4db8d311 1px,transparent 1px),linear-gradient(90deg,#4db8d311 1px,transparent 1px);background-size:39px 39px;opacity:.55;mask-image:linear-gradient(90deg,transparent,#000)}.hero-body{padding:clamp(25px,4vw,49px);z-index:1;display:flex;flex-direction:column;align-items:flex-start}.hero-kicker{font-size:11px;font-weight:800;letter-spacing:.17em;color:#44dbc7;margin-bottom:20px}.hero h1{max-width:620px}.hero h1 span{color:#5fe1cb}.hero-desc{max-width:505px;font-size:13px;color:#bacde1;margin:18px 0 27px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}.hero-visual{position:relative;min-height:290px;display:flex;align-items:center;justify-content:center}.hero-visual svg{width:min(95%,440px);height:auto;filter:drop-shadow(0 12px 22px #0005)}.hero-float{position:absolute;bottom:25px;left:4%;right:5%;display:flex;justify-content:space-between;gap:8px}.float-label{background:#081c34d8;color:#b2d4eb;border:1px solid #44719775;padding:8px 10px;border-radius:10px;font-size:10px;font-weight:700;backdrop-filter:blur(8px)}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:19px}.metric,.panel,.lesson-card,.belt-card,.lab-card,.source-card{background:#fff;border:1px solid #e6ebf2;border-radius:16px;box-shadow:var(--shadow)}.metric{padding:20px 23px;display:flex;justify-content:space-between;align-items:center;min-height:92px}.metric-number{font-size:29px;font-weight:800;letter-spacing:-.06em}.metric-label{color:var(--muted);font-size:11px;margin-top:5px}.metric-icon{height:40px;width:40px;border-radius:12px;background:#edf5ff;color:#2c72d7;display:grid;place-items:center;font-size:17px}.belt-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.belt-card{padding:19px 17px 17px;min-height:202px;position:relative;overflow:hidden;display:flex;flex-direction:column}.belt-strip{height:11px;width:79px;border-radius:3px;margin-bottom:15px;box-shadow:inset 0 0 0 1px #00000015}.belt-card h3{font-size:17px}.belt-card p{font-size:11px;color:#6b7d90;margin:6px 0 15px;line-height:1.5}.belt-btm{margin-top:auto}.belt-btm .caption{display:flex;justify-content:space-between;font-size:10px;color:#647588;margin:0 0 7px}.progress{height:6px;border-radius:30px;background:#e7edf4;overflow:hidden}.progress span{height:100%;display:block;background:var(--blue);border-radius:30px;transition:width .25s}.belt-card button{width:100%;margin-top:13px}.belt-status{position:absolute;top:20px;right:15px;font-size:10px;font-weight:800;color:#7190a1}.next-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.panel{padding:22px}.feature-panel{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(125deg,#fff,#f3f8ff)}.feature-panel .button{align-self:flex-start;margin-top:16px}.label-icon{height:32px;width:32px;display:inline-grid;place-items:center;border-radius:10px;background:#e8f2ff;color:var(--blue);margin-bottom:12px}.outline-pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:15px 0}.pipeline-node{border:1px solid #e3eaf1;border-radius:9px;font-size:10px;padding:12px 7px;text-align:center;background:#fbfdff;font-weight:800;color:#254668}.mini-note{font-size:11px;line-height:1.65;color:#63778c}.page-heading{margin:2px 0 27px}.page-heading h1{font-size:35px}.page-heading p{margin:10px 0 0;font-size:13px;color:var(--muted);max-width:720px}.filters{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}.filter{border:1px solid #dce5ee;background:#fff;border-radius:20px;padding:9px 12px;font-size:11px;font-weight:800;color:#5e748b}.filter.active{color:#fff;background:#163553;border-color:#163553}.filter i{width:10px;height:10px;display:inline-block;border-radius:2px;margin-right:6px;vertical-align:middle}.search{width:100%;max-width:480px;border:1px solid #dce5ee;background:white;border-radius:12px;padding:12px 14px;color:#18344d;font-size:13px}.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.lesson-card{padding:20px;display:flex;flex-direction:column;min-height:238px;transition:transform .2s,box-shadow .2s}.lesson-card:hover{transform:translateY(-3px);box-shadow:0 20px 60px #153d6415}.lesson-meta{display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:800;color:#688297;margin-bottom:14px}.dot{height:9px;width:9px;border-radius:3px;display:inline-block;vertical-align:middle;margin-right:5px}.lesson-card h3{font-size:18px;line-height:1.32}.lesson-card p{color:#738397;font-size:11px;line-height:1.65;flex:1}.lesson-card .card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #edf1f5;padding-top:15px}.status-text{color:#63798d;font-size:10px;font-weight:700}.status-ok{color:#13977b}.empty{background:white;border:1px dashed #cfdce8;border-radius:14px;padding:28px;color:#6d7d91;text-align:center}.lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.lab-card{padding:23px}.lab-card h3{font-size:18px;margin:8px 0}.lab-card p{font-size:12px;color:#65778a;line-height:1.6}.lab-progress{font-size:11px;font-weight:800;margin:11px 0}.lab-steps{display:grid;gap:11px;margin:15px 0 18px}.lab-step{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.55}.lab-step input{accent-color:#1c67cb;width:15px;height:15px;flex:0 0 auto;margin-top:2px}.lab-deliverable{background:#f2f7fc;padding:11px 13px;border-radius:10px;font-size:11px;line-height:1.55}.lab-cert{border-top:1px solid var(--line);margin-top:15px;padding-top:15px}.lab-cert label{display:flex;gap:9px;align-items:flex-start;font-size:11px;font-weight:800}.lab-cert input{accent-color:#16a88c;width:16px;height:16px;flex-shrink:0}.joint-playground{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.joint-canvas{background:radial-gradient(circle at center,#eefaff,#edf3fa);border-radius:14px;min-height:242px;display:grid;place-items:center}.joint-canvas svg{width:100%;max-width:470px;display:block}.range-row{margin:17px 0}.range-row label{display:flex;justify-content:space-between;font-size:12px;font-weight:700}.range-row input{width:100%;accent-color:var(--blue);margin-top:9px}.joint-readout{font-variant-numeric:tabular-nums;font-size:14px;font-weight:800;color:#236cc7;padding:11px;border-radius:10px;background:#eef6ff}.glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.term{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}.term strong{display:block;font-size:14px}.term p{margin:7px 0 0;font-size:12px;color:#65778a;line-height:1.6}.source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.source-card{padding:20px}.source-card a{color:#1d66ce;text-decoration:underline;text-underline-offset:2px}.source-card h3{font-size:15px}.source-card p{font-size:11px;color:#6f8092;line-height:1.65}.source-org{font-size:11px;font-weight:800;color:#4b7bb6;margin:9px 0}.settings-grid{max-width:740px;display:grid;gap:13px}.settings-grid .panel p{font-size:12px;color:#67798d}.settings-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.overlay{position:fixed;inset:0;z-index:100;background:#061529b5;backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:30px 15px}.modal{background:#fff;width:min(900px,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 100px #04172f60;margin:auto}.modal-head{background:linear-gradient(115deg,#0b1c33,#1a3b60);color:#fff;padding:31px clamp(20px,5vw,43px);position:relative}.modal-head .overline{color:#71dfd3}.modal-head h2{font-size:clamp(22px,3vw,33px);max-width:740px;margin:11px 0}.modal-head p{font-size:12px;color:#bdcede;max-width:670px}.close{position:absolute;top:18px;right:18px;background:#ffffff1e;border:1px solid #ffffff31;color:#fff;width:33px;height:33px;border-radius:10px;font-size:22px;line-height:1}.modal-content{padding:30px clamp(20px,5vw,43px) 36px;max-height:calc(100vh - 160px);overflow-y:auto}.lesson-objective{border-left:4px solid #26bea9;background:#edfbf9;padding:14px 16px;border-radius:0 10px 10px 0;color:#275e61;font-size:12px;margin:0 0 24px}.lesson-section{margin:25px 0}.lesson-section h3{font-size:17px}.lesson-section p{font-size:13px;color:#4f657a;line-height:1.85}.explain-box{background:#f5f8fc;border:1px solid #e3ebf3;border-radius:12px;padding:16px 19px;margin:16px 0}.explain-box strong{display:block;font-size:12px;color:#254d79}.explain-box p{margin:7px 0 0;font-size:12px;line-height:1.75;color:#52697d}.explain-box.caution{background:#fff9f1;border-color:#fae9ce}.explain-box.caution strong{color:#a36417}.code-sample{background:#11253e;color:#bde7e8;padding:17px;border-radius:12px;white-space:pre-wrap;overflow-x:auto;font-size:11px;line-height:1.65}.quiz-box{border:1px solid #dbe6ef;background:#fcfeff;border-radius:14px;padding:21px;margin-top:27px}.quiz-box h3{margin-bottom:8px}.quiz-question{font-size:13px;font-weight:800;margin:13px 0 15px}.answer-option{border:1px solid #dde6ee;background:white;border-radius:10px;padding:12px 14px;margin:9px 0;display:flex;align-items:center;gap:11px;font-size:12px;cursor:pointer;line-height:1.45}.answer-option:hover{border-color:#87b0e5}.answer-option.selected{border-color:#287de3;background:#f0f7ff}.answer-option input{accent-color:#236ddd;flex-shrink:0}.answer-result{margin:13px 0;padding:12px 14px;background:#e8f9f3;border:1px solid #c6efdd;border-radius:10px;color:#147a60;font-size:12px;line-height:1.55}.answer-result.fail{background:#fff3ed;color:#ac5938;border-color:#ffdfd0}.quiz-actions{margin-top:15px}.refs{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0}.ref-link{padding:7px 9px;border:1px solid #dfeaf3;background:#f6f9fc;color:#336eac;font-size:10px;font-weight:800;border-radius:8px}.exam-question{border-bottom:1px solid #edf1f5;padding:12px 0 18px}.exam-question:last-child{border:0}.exam-question .answer-option{font-size:11px;padding:10px}.exam-footer{border-top:1px solid #e8eef4;padding-top:17px;margin-top:18px}.toast{position:fixed;bottom:21px;right:23px;z-index:300;background:#122b42;color:white;border-radius:12px;padding:13px 17px;box-shadow:0 9px 45px #0005;font-size:12px;max-width:360px}.notice{background:#fff8ed;border:1px solid #f3e0bf;color:#845922;font-size:12px;padding:14px;border-radius:11px;line-height:1.6;margin:17px 0}.footer{margin:32px 0;color:#8998a8;font-size:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.mobile-top{display:none}.menu-btn{background:none;border:1px solid #dce5ef;border-radius:9px;padding:8px 11px}.nav-shade{display:none}
+@media(max-width:1160px){.belt-grid{grid-template-columns:repeat(3,1fr)}.lesson-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:850px){:root{--sidebar:230px}.sidebar{position:fixed;transform:translateX(-100%);transition:transform .22s}.sidebar.mobile-open{transform:translateX(0)}.nav-shade.visible{display:block;position:fixed;inset:0;background:#07152792;z-index:8}.main{padding:19px 19px 50px}.mobile-top{display:inline-block}.hero{grid-template-columns:1fr}.hero-visual{display:none}.topbar{margin-bottom:20px}.metrics{grid-template-columns:repeat(3,1fr)}.metric{padding:13px}.metric-number{font-size:23px}}
+@media(max-width:620px){.main{padding:15px 13px 50px}.top-title{font-size:12px}.top-actions .chip{display:none}.hero{border-radius:17px;min-height:300px}.hero-body{padding:27px 23px}.hero-desc{font-size:12px}.metrics{gap:8px}.metric{padding:14px 10px;min-height:80px}.metric-icon{display:none}.metric-number{font-size:24px}.metric-label{font-size:10px}.belt-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.belt-card{padding:15px 12px;min-height:190px}.belt-card h3{font-size:15px}.belt-card p{font-size:10px}.lesson-grid,.lab-grid,.glossary-grid,.source-grid,.next-panel,.joint-playground{grid-template-columns:1fr}.section-head h2{font-size:21px}.page-heading h1{font-size:29px}.modal-content{max-height:none;padding:22px 18px}.overlay{padding:6px}.modal{border-radius:12px}.modal-head{padding:28px 20px}.pipeline-node{font-size:8px;padding:10px 3px}.footer{font-size:9px}.lab-card{padding:20px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+window.__ACADEMY_DATA__ = {
+  "title": "Physical AI Academy",
+  "version": "1.0.0",
+  "updated": "2026-11-01",
+  "belts": [
+    {
+      "id": "white",
+      "name": "White",
+      "rank": 1,
+      "color": "#f5f6f8",
+      "ink": "#1e3348",
+      "theme": "The Robot",
+      "tagline": "Understand how a machine senses, decides and acts.",
+      "focus": "Robotics fundamentals",
+      "duration": "3–4 hours"
+    },
+    {
+      "id": "yellow",
+      "name": "Yellow",
+      "rank": 2,
+      "color": "#f8cf54",
+      "ink": "#503b0d",
+      "theme": "The Body",
+      "tagline": "Read a robot like an engineer, not just a 3D model.",
+      "focus": "Robot anatomy, URDF & physics",
+      "duration": "4–5 hours"
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "rank": 3,
+      "color": "#f29955",
+      "ink": "#5a2b09",
+      "theme": "The Motion",
+      "tagline": "Explain where the robot is and how it can move.",
+      "focus": "Kinematics, motion & ROS 2",
+      "duration": "5–6 hours"
+    },
+    {
+      "id": "green",
+      "name": "Green",
+      "rank": 4,
+      "color": "#45ac80",
+      "ink": "#083c2b",
+      "theme": "The Senses",
+      "tagline": "Close the loop between observation and action.",
+      "focus": "Perception, control & planning",
+      "duration": "5–6 hours"
+    },
+    {
+      "id": "blue",
+      "name": "Blue",
+      "rank": 5,
+      "color": "#578ee8",
+      "ink": "#0d2553",
+      "theme": "The Simulation",
+      "tagline": "Create trustworthy virtual learning environments.",
+      "focus": "Simulation & robot learning",
+      "duration": "6–8 hours"
+    },
+    {
+      "id": "brown",
+      "name": "Brown",
+      "rank": 6,
+      "color": "#9b7051",
+      "ink": "#30180f",
+      "theme": "The Intelligence",
+      "tagline": "Build and evaluate learning-based robot behavior.",
+      "focus": "Physical AI architectures & deployment",
+      "duration": "7–9 hours"
+    },
+    {
+      "id": "black",
+      "name": "Black",
+      "rank": 7,
+      "color": "#242a34",
+      "ink": "#ffffff",
+      "theme": "The System",
+      "tagline": "Architect and defend an end-to-end Physical AI demonstrator.",
+      "focus": "End-to-end Physical AI mastery",
+      "duration": "8–12 hours"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "wh-01",
+      "belt": "white",
+      "title": "What makes a robot a robot?",
+      "minutes": 25,
+      "objectives": "Distinguish robot hardware, embedded software, autonomy and AI.",
+      "blocks": [
+        {
+          "heading": "The physical system",
+          "body": "A robot is an embodied machine with sensors, actuators and computation. A controller converts goals and feedback into actuator commands. Some robots are autonomous; others are teleoperated or execute fixed programs."
+        },
+        {
+          "heading": "Classic automation versus Physical AI",
+          "body": "A programmed industrial arm can repeatedly follow predefined trajectories without learned intelligence. Physical AI emphasizes models that infer state, reason about tasks and/or learn action policies grounded in physical interaction. It does not replace safety-critical controls."
+        },
+        {
+          "heading": "Three layers",
+          "body": "Separate task level (what outcome), motion level (how to move), and hardware level (torque, position, current, braking). A language model giving a task does not by itself make the robot physically capable."
+        }
+      ],
+      "example": "An arm moving boxes with a fixed PLC sequence is robotic automation; the same arm learning grasp choices from demonstrations adds a learned policy.",
+      "trap": "Not every robot uses AI, and not every AI agent has a physical embodiment.",
+      "task": "Draw a three-layer architecture for a pick-and-place robot and label at least one sensor and actuator.",
+      "question": "Which statement is correct?",
+      "options": [
+        "Every robot must use a neural network.",
+        "A robot can execute a fixed program without a learned policy.",
+        "A language model is itself a physical robot."
+      ],
+      "answer": 1,
+      "why": "Robotics predates machine learning and can use conventional control.",
+      "refs": [
+        "hfcourse",
+        "modern"
+      ],
+      "code": null
+    },
+    {
+      "id": "wh-02",
+      "belt": "white",
+      "title": "Anatomy of an industrial robot",
+      "minutes": 30,
+      "objectives": "Identify links, joints, sensors, actuators, controllers and end effectors.",
+      "blocks": [
+        {
+          "heading": "Body and joints",
+          "body": "Rigid links are connected by joints. A revolute joint rotates; a prismatic joint translates. The end effector is the tool or gripper acting on the environment."
+        },
+        {
+          "heading": "Actuation and measurement",
+          "body": "Motors and transmissions generate movement. Encoders measure joint positions. Force/torque sensors and cameras provide additional feedback."
+        },
+        {
+          "heading": "Embedded controls",
+          "body": "Servo loops run at predictable rates, with mechanical and electrical limits. Higher-level software sends desired trajectories, not unconstrained motor commands."
+        }
+      ],
+      "example": "A six-axis industrial manipulator commonly has six actuated rotational joints, plus a gripper as a separate mechanism.",
+      "trap": "A gripper with one moving jaw can still be mechanically valid.",
+      "task": "Sketch a robot and label base, links, six axes, TCP, gripper, encoder and controller.",
+      "question": "What is a TCP?",
+      "options": [
+        "The robot communication protocol.",
+        "The tool center point used as a task-space reference.",
+        "The number of motors."
+      ],
+      "answer": 1,
+      "why": "The TCP is a frame attached to the tool, used to plan and measure tool pose.",
+      "refs": [
+        "modern",
+        "urdf"
+      ],
+      "code": null
+    },
+    {
+      "id": "wh-03",
+      "belt": "white",
+      "title": "The sense–plan–act feedback loop",
+      "minutes": 30,
+      "objectives": "Trace signals from a task to perception, planning, control and feedback.",
+      "blocks": [
+        {
+          "heading": "Observe",
+          "body": "Cameras, encoders, IMUs and force sensors produce measurements with noise and delay. Measurements do not directly equal the true state."
+        },
+        {
+          "heading": "Estimate and decide",
+          "body": "Software estimates pose and environment state, chooses a task or motion, and checks constraints such as collisions."
+        },
+        {
+          "heading": "Act and correct",
+          "body": "Low-level controllers execute commands; fresh observations reveal errors. Replanning or feedback control handles disturbances."
+        }
+      ],
+      "example": "For a grasp: detect object, estimate pose, choose grasp, plan collision-free motion, close gripper, verify grip.",
+      "trap": "A one-time plan without feedback is fragile when the environment changes.",
+      "task": "Draw the loop for an AMR approaching a loading station, including an obstacle detection branch.",
+      "question": "Which component closes the loop?",
+      "options": [
+        "A CAD mesh.",
+        "Feedback from observed robot/environment state.",
+        "A static animation."
+      ],
+      "answer": 1,
+      "why": "Feedback allows error correction and disturbance rejection.",
+      "refs": [
+        "mit",
+        "moveit"
+      ],
+      "code": null
+    },
+    {
+      "id": "wh-04",
+      "belt": "white",
+      "title": "Robot families and real use cases",
+      "minutes": 25,
+      "objectives": "Classify industrial manipulators, mobile robots and humanoids.",
+      "blocks": [
+        {
+          "heading": "Manipulators",
+          "body": "Fixed-base arms are well suited to repetitive manipulation. Their reach, payload, accuracy and end effector determine feasible tasks."
+        },
+        {
+          "heading": "Mobile robots",
+          "body": "AGVs commonly follow constrained guidance; AMRs use localization and navigation to move in less structured spaces. The marketing terms can overlap."
+        },
+        {
+          "heading": "Legged and humanoid",
+          "body": "Legged robots face balance, contact and dynamic control problems. Humanoids are not automatically more capable or cost-effective than specialized solutions."
+        }
+      ],
+      "example": "A factory may use a fixed arm for loading, an AMR for transport and a humanoid only where the task and environment justify it.",
+      "trap": "Robot shape is not proof of intelligence or commercial viability.",
+      "task": "Build a use-case matrix with task, environment, payload, cycle-time and safety constraints.",
+      "question": "What is the best criterion for selecting a robot form factor?",
+      "options": [
+        "Its resemblance to a human.",
+        "Fit to task, environment, constraints and economics.",
+        "Which video is more impressive."
+      ],
+      "answer": 1,
+      "why": "Selection should be driven by validated requirements.",
+      "refs": [
+        "hfcourse",
+        "modern"
+      ],
+      "code": null
+    },
+    {
+      "id": "ye-01",
+      "belt": "yellow",
+      "title": "Links, joints and degrees of freedom",
+      "minutes": 30,
+      "objectives": "Read a serial kinematic chain and count independent DOFs.",
+      "blocks": [
+        {
+          "heading": "Kinematic chain",
+          "body": "A link is a rigid body. A joint defines relative motion between a parent and child link. Fixed joints add no independent motion; revolute and prismatic joints normally add one degree of freedom each."
+        },
+        {
+          "heading": "Frames",
+          "body": "Every link and joint has frames. Transformations locate one frame relative to another. Convention consistency is critical."
+        },
+        {
+          "heading": "Topology",
+          "body": "URDF models connected links as a tree; closed loops need special handling in downstream tools."
+        }
+      ],
+      "example": "A chain with three revolute joints and one fixed joint has three actuated geometric DOFs, assuming independent joints.",
+      "trap": "The number of visible links does not equal the number of independent degrees of freedom.",
+      "task": "Count the DOFs on a small robot and draw the parent-child relationships.",
+      "question": "A fixed joint typically contributes how many motion degrees of freedom?",
+      "options": [
+        "0",
+        "1",
+        "3"
+      ],
+      "answer": 0,
+      "why": "Fixed means no relative motion between the two linked bodies.",
+      "refs": [
+        "urdf",
+        "modern"
+      ],
+      "code": null
+    },
+    {
+      "id": "ye-02",
+      "belt": "yellow",
+      "title": "Read a URDF in five minutes",
+      "minutes": 35,
+      "objectives": "Inspect robot XML structure for parent–child relations and limits.",
+      "blocks": [
+        {
+          "heading": "What URDF contains",
+          "body": "A robot description typically declares links, joints, geometry, visual and collision representations, and optionally inertial properties. URDF is not a robot control program."
+        },
+        {
+          "heading": "Joint details",
+          "body": "A joint includes type, parent and child, origin transform, and sometimes axis and limits. The axis is expressed in the joint frame."
+        },
+        {
+          "heading": "What to validate",
+          "body": "Check that every referenced parent/child link exists, names are unique, joint limits are coherent, and the kinematic graph has one root and no unintended cycles."
+        }
+      ],
+      "example": "The sample below connects a base to a forearm by a revolute joint.",
+      "trap": "A visually rendered robot can still contain invalid physical parameters.",
+      "task": "Inspect an imported URDF: report number of links and joints, root, each joint type, and unresolved references.",
+      "question": "What does a URDF <joint> element primarily specify?",
+      "options": [
+        "A learned action policy.",
+        "A relationship and permitted relative motion between links.",
+        "The camera image stream."
+      ],
+      "answer": 1,
+      "why": "A joint defines kinematic/dynamic relationship in the robot model.",
+      "refs": [
+        "urdf"
+      ],
+      "code": "<robot name=\"demo\">\n  <link name=\"base\"/>\n  <link name=\"arm\"/>\n  <joint name=\"shoulder\" type=\"revolute\">\n    <parent link=\"base\"/>\n    <child link=\"arm\"/>\n    <origin xyz=\"0 0 0.2\" rpy=\"0 0 0\"/>\n    <axis xyz=\"0 0 1\"/>\n    <limit lower=\"-1.57\" upper=\"1.57\" effort=\"30\" velocity=\"1\"/>\n  </joint>\n</robot>"
+    },
+    {
+      "id": "ye-03",
+      "belt": "yellow",
+      "title": "Mass, inertia, collision and reality",
+      "minutes": 35,
+      "objectives": "Distinguish visualization data from physical simulation properties.",
+      "blocks": [
+        {
+          "heading": "Three representations",
+          "body": "A detailed visual mesh helps display. A simpler collision geometry supports contact testing. Inertial properties describe mass distribution: mass, center of mass and inertia tensor."
+        },
+        {
+          "heading": "Physical validity",
+          "body": "An inertia tensor is symmetric; nonzero off-diagonal terms can be legitimate for a rotated or asymmetric mass distribution. Numerical validation should check physical consistency rather than force zeros."
+        },
+        {
+          "heading": "Contact approximations",
+          "body": "Simulation accuracy depends on geometry, contacts, friction, time step and solver. Real grippers add compliance, tolerances and uncertainty."
+        }
+      ],
+      "example": "A robot with a beautiful mesh but zero or inconsistent inertia is not ready for trustworthy dynamics simulation.",
+      "trap": "Near-zero RPY numbers are often floating-point noise, not a defect.",
+      "task": "Compare one URDF link’s visual, collision and inertial blocks; list missing simulation inputs.",
+      "question": "Which claim is correct?",
+      "options": [
+        "All inertia off-diagonal values must be zero.",
+        "Visual geometry alone is sufficient for dynamics.",
+        "Off-diagonal inertia terms may be physically valid."
+      ],
+      "answer": 2,
+      "why": "Products of inertia depend on frame orientation and mass distribution.",
+      "refs": [
+        "urdf",
+        "mujoco",
+        "mit"
+      ],
+      "code": null
+    },
+    {
+      "id": "ye-04",
+      "belt": "yellow",
+      "title": "Robot model exchange: URDF, MJCF, USD",
+      "minutes": 30,
+      "objectives": "Choose a format by the problem it solves.",
+      "blocks": [
+        {
+          "heading": "URDF",
+          "body": "URDF is a ROS-centered robot tree description, widely used for kinematics and robot integration."
+        },
+        {
+          "heading": "MJCF",
+          "body": "MuJoCo’s XML format represents articulated physical systems, constraints, sensors and simulation detail; MuJoCo can also load URDF."
+        },
+        {
+          "heading": "USD",
+          "body": "OpenUSD is a scene-description framework often used for composition and large-scale 3D environments. Translating between formats can lose fidelity, so validate joints, frames, mass, collision and actuators after import."
+        }
+      ],
+      "example": "A URDF-to-simulator pipeline should compare link count, joint types, limits and simulated behavior after conversion.",
+      "trap": "Format conversion is not guaranteed semantic or physical equivalence.",
+      "task": "Design a format-conversion acceptance checklist, including units, axes, inertia, contacts and kinematic equivalence.",
+      "question": "What is the safest assumption about model conversion?",
+      "options": [
+        "Everything transfers exactly.",
+        "Geometric and physical fidelity must be tested.",
+        "USD is a robot control protocol."
+      ],
+      "answer": 1,
+      "why": "Each format has different modeling emphasis and importer support.",
+      "refs": [
+        "urdf",
+        "mujoco",
+        "isaac"
+      ],
+      "code": null
+    },
+    {
+      "id": "or-01",
+      "belt": "orange",
+      "title": "Coordinate frames and rigid transforms",
+      "minutes": 40,
+      "objectives": "Understand position, orientation and frame composition.",
+      "blocks": [
+        {
+          "heading": "Pose",
+          "body": "A rigid-body pose has translation and rotation. In 3D, it can be represented with a 4×4 homogeneous transform combining a 3×3 rotation and a position vector."
+        },
+        {
+          "heading": "Frame conventions",
+          "body": "Base, world, flange, tool and camera frames are different. A point must always be interpreted relative to a named frame."
+        },
+        {
+          "heading": "Transform chains",
+          "body": "To move a tool point into the world frame, compose the world-to-base, base-to-tool and tool-to-point transforms in the correct order."
+        }
+      ],
+      "example": "A tool frame offset of 100 mm must be accounted for; otherwise the flange reaches the target while the gripper tip misses it.",
+      "trap": "Rotations do not generally commute: order matters.",
+      "task": "Draw world→base→flange→TCP frames and explain one transform composition.",
+      "question": "Which quantity is a full 3D pose?",
+      "options": [
+        "Only xyz position.",
+        "Only joint angles.",
+        "Position together with orientation."
+      ],
+      "answer": 2,
+      "why": "Pose includes translation and rotation.",
+      "refs": [
+        "modern"
+      ],
+      "code": null
+    },
+    {
+      "id": "or-02",
+      "belt": "orange",
+      "title": "Forward and inverse kinematics",
+      "minutes": 45,
+      "objectives": "Explain FK, IK, reachability and multiple solutions.",
+      "blocks": [
+        {
+          "heading": "Forward kinematics",
+          "body": "Given joint coordinates q and robot geometry, FK computes the end-effector pose T(q)."
+        },
+        {
+          "heading": "Inverse kinematics",
+          "body": "Given a desired pose, IK seeks joint coordinates meeting the target; there may be multiple solutions, no solution, or solutions near singularities."
+        },
+        {
+          "heading": "Jacobian",
+          "body": "The Jacobian locally maps joint velocities into task-space velocities and can reveal motion singularities."
+        }
+      ],
+      "example": "An arm may reach the same tool position with elbow-up or elbow-down configurations.",
+      "trap": "IK does not prove collision avoidance or torque feasibility.",
+      "task": "Compute FK for a simple two-link planar arm at q1=0, q2=0 and link lengths 1 m each.",
+      "question": "What does inverse kinematics compute?",
+      "options": [
+        "Joint coordinates for a target tool pose.",
+        "The inertia matrix from mass alone.",
+        "Camera calibration intrinsics."
+      ],
+      "answer": 0,
+      "why": "IK maps task-space goals into candidate joint configurations.",
+      "refs": [
+        "modern",
+        "moveit"
+      ],
+      "code": null
+    },
+    {
+      "id": "or-03",
+      "belt": "orange",
+      "title": "Trajectories and motion planning",
+      "minutes": 40,
+      "objectives": "Separate geometric paths, time parameterization and control.",
+      "blocks": [
+        {
+          "heading": "Path versus trajectory",
+          "body": "A path specifies geometric configurations. A trajectory includes timing, velocities and sometimes accelerations; dynamic limits shape whether it is executable."
+        },
+        {
+          "heading": "Planning constraints",
+          "body": "Collision avoidance, joint ranges, workspace obstacles and task constraints filter candidate motion."
+        },
+        {
+          "heading": "Execution",
+          "body": "Controllers follow trajectories under finite torque and rate. Monitor tracking errors, stop conditions and deviations."
+        }
+      ],
+      "example": "MoveIt 2 can be used for manipulation planning in the ROS 2 ecosystem.",
+      "trap": "Collision-free paths are not automatically safe for people, loads or hardware.",
+      "task": "Write a test case: move from pick pose to place pose while checking collision, speed, acceleration and stop behavior.",
+      "question": "What distinguishes a trajectory from a purely geometric path?",
+      "options": [
+        "It has timing information.",
+        "It has no constraints.",
+        "It must be learned by AI."
+      ],
+      "answer": 0,
+      "why": "Timing makes the path executable over time.",
+      "refs": [
+        "modern",
+        "moveit",
+        "mit"
+      ],
+      "code": null
+    },
+    {
+      "id": "or-04",
+      "belt": "orange",
+      "title": "ROS 2: nodes, topics and actions",
+      "minutes": 40,
+      "objectives": "Map modular robot software interfaces.",
+      "blocks": [
+        {
+          "heading": "Nodes and topics",
+          "body": "ROS 2 nodes encapsulate functionality; topics transport asynchronous streams such as joint state or camera frames using publish/subscribe."
+        },
+        {
+          "heading": "Services and actions",
+          "body": "Services fit request–response interactions. Actions are suited to longer-running goals that report feedback and can be canceled."
+        },
+        {
+          "heading": "The graph",
+          "body": "Design interfaces by data contracts, quality of service, frequency and failure behavior; ROS 2 is middleware, not a robot brain."
+        }
+      ],
+      "example": "A navigation action can report progress while an arm controller subscribes to command streams.",
+      "trap": "ROS 2 does not automatically ensure deterministic real-time execution or hardware safety.",
+      "task": "Draw five ROS 2 nodes and label two topics, one service and one action.",
+      "question": "Which interface best matches a long-running navigation goal with feedback?",
+      "options": [
+        "A ROS 2 action.",
+        "A static URDF file.",
+        "A joint inertial tensor."
+      ],
+      "answer": 0,
+      "why": "Actions support goals, feedback and cancellation.",
+      "refs": [
+        "ros"
+      ],
+      "code": null
+    },
+    {
+      "id": "gr-01",
+      "belt": "green",
+      "title": "Sensors and state estimation",
+      "minutes": 45,
+      "objectives": "Explain uncertainty, localization and sensor fusion.",
+      "blocks": [
+        {
+          "heading": "Observations are noisy",
+          "body": "A camera measures images, an IMU measures motion-related quantities, and encoders measure joint positions. None provides perfect world state."
+        },
+        {
+          "heading": "State estimation",
+          "body": "Filters combine predictions with measurements. Odometry drifts; corrections from external features or sensors improve localization."
+        },
+        {
+          "heading": "Time and calibration",
+          "body": "Clock synchronization, extrinsics and sensor latency can dominate error. Estimates must carry confidence and timestamps."
+        }
+      ],
+      "example": "An AMR may combine wheel odometry, inertial measurements and lidar landmarks to estimate pose.",
+      "trap": "Camera detections without calibrated extrinsics do not give reliable robot-frame coordinates.",
+      "task": "List measurement, estimated state, major noise source and sampling rate for three sensors.",
+      "question": "Why combine wheel odometry and external localization?",
+      "options": [
+        "Because both are always exact.",
+        "To mitigate different sources of uncertainty and drift.",
+        "To avoid using coordinate frames."
+      ],
+      "answer": 1,
+      "why": "Complementary measurements reduce ambiguity and accumulated error.",
+      "refs": [
+        "mit",
+        "ros"
+      ],
+      "code": null
+    },
+    {
+      "id": "gr-02",
+      "belt": "green",
+      "title": "From camera pixels to grasp proposals",
+      "minutes": 45,
+      "objectives": "Describe perception and object-to-robot transformations.",
+      "blocks": [
+        {
+          "heading": "Scene understanding",
+          "body": "Detection or segmentation locates potential objects in images, while depth and calibration can support 3D localization."
+        },
+        {
+          "heading": "Grasp geometry",
+          "body": "Candidate grasps are evaluated for reachability, gripper geometry, approach path, collisions and contact feasibility."
+        },
+        {
+          "heading": "Closed-loop manipulation",
+          "body": "Visual servoing and tactile/force feedback can adjust behavior as objects move or slip."
+        }
+      ],
+      "example": "A vision model identifies a connector; calibrated 3D pose and grasp synthesis are still needed before a robot can pick it.",
+      "trap": "A label such as “screwdriver” is not sufficient to command a safe physical grasp.",
+      "task": "Sketch RGB/depth → object pose → grasp → IK → collision check → control → verification.",
+      "question": "What is needed after 2D object detection to perform a reliable grasp?",
+      "options": [
+        "Only the object’s name.",
+        "Geometry, pose, reachable grasp and feedback.",
+        "A higher-resolution slide deck."
+      ],
+      "answer": 1,
+      "why": "Successful manipulation requires spatial and physical constraints.",
+      "refs": [
+        "moveit",
+        "lerobot"
+      ],
+      "code": null
+    },
+    {
+      "id": "gr-03",
+      "belt": "green",
+      "title": "Feedback control, PID and impedance",
+      "minutes": 45,
+      "objectives": "Compare position control with contact-aware control.",
+      "blocks": [
+        {
+          "heading": "Position/velocity loops",
+          "body": "Controllers attempt to reduce tracking error despite disturbances, with gains selected for stability and performance."
+        },
+        {
+          "heading": "PID intuition",
+          "body": "Proportional action responds to error, integral addresses bias, derivative reacts to trends. Real systems need filtering and anti-windup."
+        },
+        {
+          "heading": "Force and compliance",
+          "body": "Force/torque feedback and impedance-style behavior help when contact matters; aggressive rigid position commands may damage parts."
+        }
+      ],
+      "example": "Inserting a pin into a socket may require compliant adjustment rather than commanding a fixed Cartesian pose.",
+      "trap": "More gain is not always better: it can cause oscillation or instability.",
+      "task": "Choose control modes for free-space transport versus delicate connector insertion.",
+      "question": "What does an impedance controller attempt to regulate?",
+      "options": [
+        "A compliant relation between motion error and interaction force.",
+        "A language-model token budget.",
+        "Camera exposure only."
+      ],
+      "answer": 0,
+      "why": "Impedance control shapes mechanical response to interaction forces.",
+      "refs": [
+        "mit",
+        "modern"
+      ],
+      "code": null
+    },
+    {
+      "id": "gr-04",
+      "belt": "green",
+      "title": "Planning under constraints and safety",
+      "minutes": 40,
+      "objectives": "Identify hard constraints, fallbacks and safety separation.",
+      "blocks": [
+        {
+          "heading": "Behavior planning",
+          "body": "Task planners select sequences of skills; motion planners find feasible routes. Preconditions, postconditions and exceptions make the behavior testable."
+        },
+        {
+          "heading": "Safety envelope",
+          "body": "Robot and cell safety require risk assessment, validated protective functions, limits and stopping behavior. A neural policy must not bypass these constraints."
+        },
+        {
+          "heading": "Recovery",
+          "body": "A robust system monitors failure modes: lost localization, occlusion, failed grasp, excessive force, or unexpected human presence."
+        }
+      ],
+      "example": "If an obstacle blocks a planned path, the system can stop, replan within constraints, or request human help.",
+      "trap": "An LLM-generated plan is not equivalent to a validated safety controller.",
+      "task": "Write a state machine with success, grasp failure, human interruption and safe stop states.",
+      "question": "Who should enforce non-negotiable machine safety limits?",
+      "options": [
+        "Only the natural-language prompt.",
+        "Independent validated safety/low-level mechanisms.",
+        "A video demo."
+      ],
+      "answer": 1,
+      "why": "Safety-critical controls should not depend on an unconstrained language model.",
+      "refs": [
+        "mit",
+        "moveit"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-01",
+      "belt": "blue",
+      "title": "What a simulator actually simulates",
+      "minutes": 45,
+      "objectives": "Distinguish geometry, dynamics, contacts and sensors.",
+      "blocks": [
+        {
+          "heading": "Physics modeling",
+          "body": "A simulator approximates rigid-body dynamics, articulated joints, collision response, friction and integration over time. Results are conditional on models and parameters."
+        },
+        {
+          "heading": "Sensor simulation",
+          "body": "Rendered cameras and synthetic depth or contact readings can train and test perception, but their noise and biases may differ from hardware."
+        },
+        {
+          "heading": "Fit for purpose",
+          "body": "High-fidelity visuals do not necessarily mean accurate contact forces, actuator behavior or closed-loop timing."
+        }
+      ],
+      "example": "MuJoCo emphasizes articulated dynamics; Isaac Sim/Isaac Lab support broader simulation and robot-learning workflows.",
+      "trap": "A convincing render is not evidence of valid robot physics.",
+      "task": "Define five physical and three perception checks for a pick-and-place simulation.",
+      "question": "Which factor can cause sim-to-real mismatch?",
+      "options": [
+        "Contact friction mismatch.",
+        "A slide title.",
+        "A folder name."
+      ],
+      "answer": 0,
+      "why": "Incorrect friction changes interaction outcomes and learned behavior.",
+      "refs": [
+        "mujoco",
+        "isaac"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-02",
+      "belt": "blue",
+      "title": "Digital twin versus digital scene",
+      "minutes": 40,
+      "objectives": "Explain the evidence required for a trustworthy virtual twin.",
+      "blocks": [
+        {
+          "heading": "A scene",
+          "body": "A scene represents shapes, materials, lighting and positions. It may be useful for visualization without representing current physical behavior."
+        },
+        {
+          "heading": "A physics-capable model",
+          "body": "A robot simulation adds joints, dynamics, actuators, controllers, contacts and sensor models."
+        },
+        {
+          "heading": "A validated virtual twin",
+          "body": "A twin intended to predict the real system must use relevant assumptions, be calibrated or correlated to evidence, and have explicit validity limits. Data synchronization may be relevant to its use case."
+        }
+      ],
+      "example": "A simulated factory layout shows robot placement; a validated cycle-time twin requires trajectories, resources, timing and real-world correlation.",
+      "trap": "Calling every 3D scene a high-fidelity digital twin obscures what has been validated.",
+      "task": "Create an evidence matrix: geometry, kinematics, contacts, timing, sensors, correlation and change control.",
+      "question": "Which property best strengthens a predictive virtual twin claim?",
+      "options": [
+        "Matching marketing language.",
+        "Quantified comparison against real measurements.",
+        "A photorealistic floor texture."
+      ],
+      "answer": 1,
+      "why": "Validation against relevant real data underpins prediction credibility.",
+      "refs": [
+        "mujoco",
+        "mit"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-03",
+      "belt": "blue",
+      "title": "Synthetic data and domain randomization",
+      "minutes": 45,
+      "objectives": "Design variation for robustness rather than memorization.",
+      "blocks": [
+        {
+          "heading": "Synthetic data",
+          "body": "Simulation can produce labeled observations and trajectories at scale, where collecting real examples would be costly or risky."
+        },
+        {
+          "heading": "Domain randomization",
+          "body": "Vary textures, lighting, camera pose, masses, friction and disturbances over credible ranges to discourage brittle policies."
+        },
+        {
+          "heading": "Trade-offs",
+          "body": "Unrealistic ranges can harm learning. Maintain held-out test scenarios and document the distribution used."
+        }
+      ],
+      "example": "A grasp model trained under many realistic lighting conditions may generalize better than one trained under fixed studio lighting.",
+      "trap": "More synthetic images do not guarantee improved real-world performance.",
+      "task": "Design a randomization table with parameter, range, physical justification and validation plan.",
+      "question": "Why randomize simulator parameters?",
+      "options": [
+        "To remove the need to evaluate.",
+        "To expose training to plausible variability.",
+        "To make the CAD file larger."
+      ],
+      "answer": 1,
+      "why": "Variation can improve robustness to expected deployment differences.",
+      "refs": [
+        "isaac",
+        "mujoco"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-04",
+      "belt": "blue",
+      "title": "Robot learning: imitation and reinforcement",
+      "minutes": 50,
+      "objectives": "Explain data collection, policy training, evaluation and rewards.",
+      "blocks": [
+        {
+          "heading": "Imitation learning",
+          "body": "Behavior cloning learns a mapping from observations to actions using demonstrations. Dataset quality, coverage and action alignment matter."
+        },
+        {
+          "heading": "Reinforcement learning",
+          "body": "An agent optimizes expected reward through interaction in an environment. Reward design, exploration, safety and sim-to-real transfer are important."
+        },
+        {
+          "heading": "Evaluation",
+          "body": "Use held-out environments, repeated trials, success rates, failure taxonomy and runtime measures. Training reward is not the same as reliable deployment performance."
+        }
+      ],
+      "example": "LeRobot demonstrates a teleoperate → record → train → deploy workflow with recorded robot trajectories.",
+      "trap": "Imitating a narrow dataset may fail when objects or camera viewpoints change.",
+      "task": "Compare imitation versus RL for a simple repetitive pick task and a balance-control task.",
+      "question": "Which dataset property is particularly important for behavior cloning?",
+      "options": [
+        "Representative observation–action demonstrations.",
+        "Only a product image.",
+        "An empty URDF."
+      ],
+      "answer": 0,
+      "why": "Behavior cloning learns from demonstrated states and actions.",
+      "refs": [
+        "lerobot",
+        "isaac",
+        "hfcourse"
+      ],
+      "code": null
+    },
+    {
+      "id": "br-01",
+      "belt": "brown",
+      "title": "Robot brains: policies, VLMs and VLAs",
+      "minutes": 50,
+      "objectives": "Separate language reasoning from action-generation policies.",
+      "blocks": [
+        {
+          "heading": "Three distinct systems",
+          "body": "A VLM can describe or reason about images and language; a motion controller tracks feasible commands; a VLA aims to output robot actions conditioned on vision and language."
+        },
+        {
+          "heading": "Embodiment matters",
+          "body": "Actions are defined for specific robot morphologies, sensors, timing and actuation. Cross-robot transfer needs compatible representations and adaptation."
+        },
+        {
+          "heading": "Generality is not certification",
+          "body": "Benchmarks and model cards provide evidence for specific tests, not guarantees for any environment. Always inspect the evaluation domain and failure modes."
+        }
+      ],
+      "example": "RT-2 is an early published example of vision-language-action robot research; modern policies can mix high-level and low-level modules.",
+      "trap": "An LLM that writes “pick up the cup” has not demonstrated physically safe grasp execution.",
+      "task": "Draw a hierarchy: human instruction → task policy → skill/action policy → motion control → hardware, with safety gating.",
+      "question": "What best describes a VLA?",
+      "options": [
+        "A model conditioning robot actions on vision and language.",
+        "A 3D file format.",
+        "A safety certification."
+      ],
+      "answer": 0,
+      "why": "VLA stands for vision-language-action.",
+      "refs": [
+        "rt2",
+        "lerobot"
+      ],
+      "code": null
+    },
+    {
+      "id": "br-02",
+      "belt": "brown",
+      "title": "Foundation models, adaptation and data",
+      "minutes": 50,
+      "objectives": "Evaluate policy architectures and data requirements.",
+      "blocks": [
+        {
+          "heading": "Pretraining and post-training",
+          "body": "Large pretrained models can be adapted with robot-specific trajectories. The adaptation method and embodied action space govern viability."
+        },
+        {
+          "heading": "Data pipelines",
+          "body": "Track teleoperation setup, timestamps, camera calibration, actions, train/test splits and labeling. Leakage and operator bias distort performance."
+        },
+        {
+          "heading": "Trade-off matrix",
+          "body": "Compare model size, latency, GPU needs, action horizon, robot compatibility, licensing and real-world evaluation rather than treating vendor claims as universal."
+        }
+      ],
+      "example": "A small imitation policy may outperform a large generalist model for a tightly defined cell task.",
+      "trap": "“Foundation model” does not mean it knows the dynamics of an unseen robot.",
+      "task": "Create a model evaluation scorecard for the same three tasks across policy families.",
+      "question": "What is a crucial test of an adapted robot model?",
+      "options": [
+        "Runs only in a vendor video.",
+        "Measured success on held-out task conditions.",
+        "Model parameter count alone."
+      ],
+      "answer": 1,
+      "why": "Held-out evaluation tests generalization beyond the training distribution.",
+      "refs": [
+        "lerobot",
+        "rt2",
+        "isaac"
+      ],
+      "code": null
+    },
+    {
+      "id": "br-03",
+      "belt": "brown",
+      "title": "Sim-to-real, validation and deployment",
+      "minutes": 55,
+      "objectives": "Create a staged deployment and safety protocol.",
+      "blocks": [
+        {
+          "heading": "Reality gap",
+          "body": "Simulator-to-hardware differences include compliance, friction, delays, sensor response, hardware wear and domain shift."
+        },
+        {
+          "heading": "Staging",
+          "body": "Begin with unit checks and offline evaluation, then hardware-in-the-loop or low-risk supervised trials, before bounded production pilots."
+        },
+        {
+          "heading": "Evidence",
+          "body": "Record task success, timeouts, intervention rate, recovery, collisions/near misses where applicable, distribution shifts and version identifiers. Define stop criteria upfront."
+        }
+      ],
+      "example": "A policy with high simulated pick success may still mishandle a soft package because contact modeling differs.",
+      "trap": "Simulation success alone must not authorize physical deployment.",
+      "task": "Write a test protocol with 20 representative cases, failure labels, thresholds and a safe fallback.",
+      "question": "What is a sound first step before live robot deployment?",
+      "options": [
+        "Direct uncontrolled trial on the production floor.",
+        "Documented validation in bounded conditions.",
+        "Ignoring out-of-distribution states."
+      ],
+      "answer": 1,
+      "why": "Robotics needs staged testing and explicit risk controls.",
+      "refs": [
+        "mit",
+        "isaac",
+        "mujoco"
+      ],
+      "code": null
+    },
+    {
+      "id": "br-04",
+      "belt": "brown",
+      "title": "Agentic orchestration and robotics systems",
+      "minutes": 55,
+      "objectives": "Separate supervisory agents from real-time execution and safety.",
+      "blocks": [
+        {
+          "heading": "Orchestration",
+          "body": "An agent can reason about goals, query a knowledge graph, request simulation or schedule known robot skills. It should operate through typed capabilities, not raw uncontrolled instructions."
+        },
+        {
+          "heading": "Real-time boundaries",
+          "body": "High-level planners often run with variable latency. Servo and safety loops require predictable timing, bounded outputs and explicit stop semantics."
+        },
+        {
+          "heading": "Interfaces and provenance",
+          "body": "Represent robots, tools, tasks, preconditions, frames and simulation assumptions in a shared model; log every proposed and executed action."
+        }
+      ],
+      "example": "A language-based robotics assistant converts workcell requirements into a typed specification. An approved adapter proposes robot tasks, a simulator checks motion, and an independent safety controller enforces limits.",
+      "trap": "An agent must not be assumed to directly own motor torque and functional safety.",
+      "task": "Design a controlled architecture with an agent, robotics ontology, task planner, simulation adapter and explicit approval gates.",
+      "question": "Where should the emergency-stop function live?",
+      "options": [
+        "Inside an unconstrained LLM response.",
+        "Within validated independent safety mechanisms.",
+        "In the project README only."
+      ],
+      "answer": 1,
+      "why": "Unpredictable generative models should not serve as sole safety controllers.",
+      "refs": [
+        "ros",
+        "moveit"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-01",
+      "belt": "black",
+      "title": "Full-stack Physical AI architecture",
+      "minutes": 60,
+      "objectives": "Connect physical embodiment, semantics, training and operating loops.",
+      "blocks": [
+        {
+          "heading": "System boundary",
+          "body": "Define robot, cell, sensors, edge compute, networks, task supervisor, policy runtime, low-level controllers and safety subsystems."
+        },
+        {
+          "heading": "Digital continuity",
+          "body": "Keep traceability from requirements and robot models through simulation scenes, datasets, policy versions, evaluation and deployment logs."
+        },
+        {
+          "heading": "Failure-aware design",
+          "body": "Use fallback states, bounded action interfaces, health checks, versioned artifacts, secure access and human escalation."
+        }
+      ],
+      "example": "A reference architecture connects URDF, a robot ontology, a physics simulator, a robot-policy training stack, ROS 2 and independently enforced safety.",
+      "trap": "A successful integration demonstration does not by itself establish robust real-world performance or production readiness.",
+      "task": "Deliver a C4-style context and container diagram with trust boundaries, data contracts and verification points.",
+      "question": "What is the strongest measure of an integrated Physical AI system?",
+      "options": [
+        "How many AI products are named on the slide.",
+        "Traceable behavior validated against requirements and constraints.",
+        "The model token count."
+      ],
+      "answer": 1,
+      "why": "System-level evidence is more meaningful than an untested architecture diagram.",
+      "refs": [
+        "isaac",
+        "ros"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-02",
+      "belt": "black",
+      "title": "Robot ontology and systems interoperability",
+      "minutes": 55,
+      "objectives": "Map robot semantics to engineering, simulation and manufacturing interfaces.",
+      "blocks": [
+        {
+          "heading": "Semantic model",
+          "body": "Describe robot, joint, link, sensor, end effector, task, capability, environment, resource and constraint with clear IDs, units and relationships."
+        },
+        {
+          "heading": "Reference alignment",
+          "body": "Reuse applicable standards and existing reference ontologies before inventing new classes; use mappings and provenance for concepts that differ."
+        },
+        {
+          "heading": "Engineering interoperability",
+          "body": "Robot descriptions, product structures, workcell resources and operational processes are distinct but related models. Converting a URDF does not automatically establish persistent manufacturing structure, robot placement, or validated simulation."
+        }
+      ],
+      "example": "A robotics API can demonstrate a single well-defined operation, such as reading a robot model or creating an object. Broader integration requires separately verified interfaces and test results.",
+      "trap": "One successful API operation does not establish an entire natural-language-to-factory workflow.",
+      "task": "Create an interface matrix for URDF, robot ontology, simulator and cell-planning tools. Mark each capability demonstrated, documented or unknown.",
+      "question": "What does a successful robotics API prototype actually prove?",
+      "options": [
+        "Only the specific tested behavior, under the stated conditions.",
+        "That all robotic systems are interoperable automatically.",
+        "That every robot factory can be generated from a prompt."
+      ],
+      "answer": 0,
+      "why": "Each interface and use case needs its own documented and reproducible evidence.",
+      "refs": [
+        "urdf",
+        "ros",
+        "moveit"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-03",
+      "belt": "black",
+      "title": "Benchmarking, repeatability and scientific claims",
+      "minutes": 60,
+      "objectives": "Design a benchmark that can falsify your own hypotheses.",
+      "blocks": [
+        {
+          "heading": "Test before telling the story",
+          "body": "Specify tasks, baseline, dataset and version freeze, environments, success criteria, and source of ground truth before evaluating."
+        },
+        {
+          "heading": "Measurement",
+          "body": "Report success rate with sample counts, latency distributions, human intervention, safety events, compute and cost. Separate unseen tests from training examples."
+        },
+        {
+          "heading": "Scientific honesty",
+          "body": "State uncertainty, limitations and exactly what was proven. A live demo proves only what was actually observed in that test."
+        }
+      ],
+      "example": "For robot description understanding, include a frozen known-good URDF and at least one deliberately broken reference to measure false positives and detection recall.",
+      "trap": "Non-diagonal inertias or tiny RPY terms alone are not evidence of a broken model.",
+      "task": "Define a 20-case benchmark covering model parsing, motion feasibility, sensor uncertainty and recovery; pre-register scoring.",
+      "question": "What makes a benchmark reproducible?",
+      "options": [
+        "Unrecorded manual intervention.",
+        "Frozen inputs, versions, metrics and evaluation protocol.",
+        "Only positive examples."
+      ],
+      "answer": 1,
+      "why": "Repeatability and controls reduce benchmark ambiguity.",
+      "refs": [
+        "mit",
+        "urdf"
+      ],
+      "code": null
+    },
+    {
+      "id": "bl-04",
+      "belt": "black",
+      "title": "Capstone: from prompt to validated robot factory",
+      "minutes": 75,
+      "objectives": "Deliver and defend an end-to-end robotics demonstrator blueprint.",
+      "blocks": [
+        {
+          "heading": "Define the cell",
+          "body": "Start with a factory brief: materials, robot tasks, safety zones, throughput, floor constraints and operating assumptions."
+        },
+        {
+          "heading": "Build the intermediate twin",
+          "body": "Represent requirements, robots, URDFs, capabilities, product/process/resource relationships, kinematics, equipment and constraints. Validate this intermediate specification before performing external operations."
+        },
+        {
+          "heading": "Author, simulate and assess",
+          "body": "Use documented, tested interfaces to create or configure relevant system objects; inspect resulting IDs and links. Simulate motion and throughput with robotics tools, then compare outputs against acceptance criteria."
+        }
+      ],
+      "example": "An agent proposes two pick-and-place arms and a mobile robot, builds a typed cell specification, tests it in a sandbox simulator, and explicitly flags unverified integration operations.",
+      "trap": "Never present a proposed interface as implemented; test and document each operation before claiming functional integration.",
+      "task": "Present a 10-minute design review: architecture, evidence, end-to-end trace, test results, unsolved gaps and next experiments.",
+      "question": "Which deliverable demonstrates the strongest capstone discipline?",
+      "options": [
+        "A polished demo with no audit trail.",
+        "A testable system with traceable assumptions and measured limits.",
+        "A large prompt with no validation."
+      ],
+      "answer": 1,
+      "why": "A defensible system separates verified capabilities from aspirations.",
+      "refs": [
+        "moveit",
+        "isaac",
+        "ros"
+      ],
+      "code": null
+    }
+  ],
+  "labs": [
+    {
+      "belt": "white",
+      "name": "Explain a robot without buzzwords",
+      "duration": "45 min",
+      "brief": "Pick a real robot and create a one-page system breakdown.",
+      "steps": [
+        "Identify mechanical body, sensors, actuators and controller.",
+        "Draw sense → estimate → plan → control → act → feedback.",
+        "Contrast one fixed program with one possible learned skill."
+      ],
+      "criteria": "A peer can identify each component and what makes the task autonomous, if anything.",
+      "deliverable": "Annotated robot architecture (PDF, drawing or Markdown)."
+    },
+    {
+      "belt": "yellow",
+      "name": "URDF forensic inspection",
+      "duration": "90 min",
+      "brief": "Inspect a small robot model and distinguish facts, unknowns and real defects.",
+      "steps": [
+        "Inventory links, joints, axes, limits and root link.",
+        "Check all parent/child references and name uniqueness.",
+        "Identify inertial/collision omissions without inventing errors."
+      ],
+      "criteria": "Every error claim has a supporting line or value; valid non-diagonal inertia is not falsely flagged.",
+      "deliverable": "URDF model card + validation report."
+    },
+    {
+      "belt": "orange",
+      "name": "Two-link arm reachability",
+      "duration": "90 min",
+      "brief": "Analyze a planar 2-link arm before reaching for heavy software.",
+      "steps": [
+        "Set both link lengths to 1 m and calculate fully extended reach.",
+        "Sketch two joint configurations reaching the same point if possible.",
+        "Create a ROS 2 node/topic/action interface diagram."
+      ],
+      "criteria": "Correct 2 m maximum reach and explicit discussion of unreachable poses and collisions.",
+      "deliverable": "Kinematics sketch + ROS 2 graph."
+    },
+    {
+      "belt": "green",
+      "name": "Safe pick-and-place sequence",
+      "duration": "2 h",
+      "brief": "Develop a perception-to-control execution storyboard.",
+      "steps": [
+        "List required sensors, frames and calibrations.",
+        "Define grasp acceptance, collision checks and feedback.",
+        "Add at least four explicit failure/recovery paths."
+      ],
+      "criteria": "No unconstrained plan bypasses motion and safety validation.",
+      "deliverable": "Block diagram + state machine + hazard list."
+    },
+    {
+      "belt": "blue",
+      "name": "Design a sim-to-real experiment",
+      "duration": "3 h",
+      "brief": "Specify a reproducible simulation test for grasping or locomotion.",
+      "steps": [
+        "Choose model, solver and sensor assumptions.",
+        "Define domain randomization with justifiable ranges.",
+        "Specify held-out trials and real-world correlation metrics."
+      ],
+      "criteria": "Claims are tied to test cases, expected error sources and metrics.",
+      "deliverable": "Simulation experiment protocol + metrics table."
+    },
+    {
+      "belt": "brown",
+      "name": "Compare two robot-brain strategies",
+      "duration": "3 h",
+      "brief": "Benchmark a scripted baseline against a learned policy concept.",
+      "steps": [
+        "Define the same task, environment and success metric for each.",
+        "Select data collection and evaluation protocol.",
+        "Specify high-level agent, policy, control and safety boundaries."
+      ],
+      "criteria": "Evidence demonstrates generalization checks and failure limits rather than only a best-case video.",
+      "deliverable": "Robot-brain comparison scorecard + architecture."
+    },
+    {
+      "belt": "black",
+      "name": "End-to-end Physical AI system design review",
+      "duration": "4–6 h",
+      "brief": "Defend an auditable, vendor-neutral robot-workcell prototype.",
+      "steps": [
+        "Define natural-language workcell requirements and a typed intermediate specification.",
+        "Map robot models, URDF, semantic concepts and only documented, tested robotics APIs.",
+        "Present simulated behavior, safety checks and evaluation evidence, identifying any unverified claims."
+      ],
+      "criteria": "Reproducible evidence, honest API coverage, acceptance thresholds, risk controls and next experiments.",
+      "deliverable": "Architecture blueprint + reproducible technical validation pack."
+    }
+  ],
+  "exams": {
+    "white": {
+      "questions": [
+        {
+          "question": "Which statement is correct?",
+          "options": [
+            "Every robot must use a neural network.",
+            "A robot can execute a fixed program without a learned policy.",
+            "A language model is itself a physical robot."
+          ],
+          "answer": 1,
+          "why": "Robotics predates machine learning and can use conventional control."
+        },
+        {
+          "question": "What is a TCP?",
+          "options": [
+            "The robot communication protocol.",
+            "The tool center point used as a task-space reference.",
+            "The number of motors."
+          ],
+          "answer": 1,
+          "why": "The TCP is a frame attached to the tool, used to plan and measure tool pose."
+        },
+        {
+          "question": "Which component closes the loop?",
+          "options": [
+            "A CAD mesh.",
+            "Feedback from observed robot/environment state.",
+            "A static animation."
+          ],
+          "answer": 1,
+          "why": "Feedback allows error correction and disturbance rejection."
+        },
+        {
+          "question": "What is the best criterion for selecting a robot form factor?",
+          "options": [
+            "Its resemblance to a human.",
+            "Fit to task, environment, constraints and economics.",
+            "Which video is more impressive."
+          ],
+          "answer": 1,
+          "why": "Selection should be driven by validated requirements."
+        },
+        {
+          "question": "A robot repeats a trajectory after an operator moves its workpiece. Which weakness is most likely?",
+          "options": [
+            "Lack of adaptation/feedback to the changed setup.",
+            "Too many URDF visual meshes.",
+            "A license problem by definition."
+          ],
+          "answer": 0,
+          "why": "Without adequate sensing and feedback, fixed motions cannot handle variation."
+        }
+      ],
+      "passing": 4
+    },
+    "yellow": {
+      "questions": [
+        {
+          "question": "A fixed joint typically contributes how many motion degrees of freedom?",
+          "options": [
+            "0",
+            "1",
+            "3"
+          ],
+          "answer": 0,
+          "why": "Fixed means no relative motion between the two linked bodies."
+        },
+        {
+          "question": "What does a URDF <joint> element primarily specify?",
+          "options": [
+            "A learned action policy.",
+            "A relationship and permitted relative motion between links.",
+            "The camera image stream."
+          ],
+          "answer": 1,
+          "why": "A joint defines kinematic/dynamic relationship in the robot model."
+        },
+        {
+          "question": "Which claim is correct?",
+          "options": [
+            "All inertia off-diagonal values must be zero.",
+            "Visual geometry alone is sufficient for dynamics.",
+            "Off-diagonal inertia terms may be physically valid."
+          ],
+          "answer": 2,
+          "why": "Products of inertia depend on frame orientation and mass distribution."
+        },
+        {
+          "question": "What is the safest assumption about model conversion?",
+          "options": [
+            "Everything transfers exactly.",
+            "Geometric and physical fidelity must be tested.",
+            "USD is a robot control protocol."
+          ],
+          "answer": 1,
+          "why": "Each format has different modeling emphasis and importer support."
+        },
+        {
+          "question": "A URDF link has a perfectly detailed <visual> mesh but no usable inertial data. What can be concluded?",
+          "options": [
+            "It is dynamics-ready.",
+            "Visual appearance does not establish physical simulation readiness.",
+            "It is not a valid XML document by definition."
+          ],
+          "answer": 1,
+          "why": "Dynamic behavior requires consistent inertial parameters."
+        }
+      ],
+      "passing": 4
+    },
+    "orange": {
+      "questions": [
+        {
+          "question": "Which quantity is a full 3D pose?",
+          "options": [
+            "Only xyz position.",
+            "Only joint angles.",
+            "Position together with orientation."
+          ],
+          "answer": 2,
+          "why": "Pose includes translation and rotation."
+        },
+        {
+          "question": "What does inverse kinematics compute?",
+          "options": [
+            "Joint coordinates for a target tool pose.",
+            "The inertia matrix from mass alone.",
+            "Camera calibration intrinsics."
+          ],
+          "answer": 0,
+          "why": "IK maps task-space goals into candidate joint configurations."
+        },
+        {
+          "question": "What distinguishes a trajectory from a purely geometric path?",
+          "options": [
+            "It has timing information.",
+            "It has no constraints.",
+            "It must be learned by AI."
+          ],
+          "answer": 0,
+          "why": "Timing makes the path executable over time."
+        },
+        {
+          "question": "Which interface best matches a long-running navigation goal with feedback?",
+          "options": [
+            "A ROS 2 action.",
+            "A static URDF file.",
+            "A joint inertial tensor."
+          ],
+          "answer": 0,
+          "why": "Actions support goals, feedback and cancellation."
+        },
+        {
+          "question": "A planned robot path is collision free but requires impossible acceleration. What is missing?",
+          "options": [
+            "Dynamic feasibility and time parameterization.",
+            "A different gripper color.",
+            "A larger file name."
+          ],
+          "answer": 0,
+          "why": "Path geometry alone does not ensure physically executable motion."
+        }
+      ],
+      "passing": 4
+    },
+    "green": {
+      "questions": [
+        {
+          "question": "Why combine wheel odometry and external localization?",
+          "options": [
+            "Because both are always exact.",
+            "To mitigate different sources of uncertainty and drift.",
+            "To avoid using coordinate frames."
+          ],
+          "answer": 1,
+          "why": "Complementary measurements reduce ambiguity and accumulated error."
+        },
+        {
+          "question": "What is needed after 2D object detection to perform a reliable grasp?",
+          "options": [
+            "Only the object’s name.",
+            "Geometry, pose, reachable grasp and feedback.",
+            "A higher-resolution slide deck."
+          ],
+          "answer": 1,
+          "why": "Successful manipulation requires spatial and physical constraints."
+        },
+        {
+          "question": "What does an impedance controller attempt to regulate?",
+          "options": [
+            "A compliant relation between motion error and interaction force.",
+            "A language-model token budget.",
+            "Camera exposure only."
+          ],
+          "answer": 0,
+          "why": "Impedance control shapes mechanical response to interaction forces."
+        },
+        {
+          "question": "Who should enforce non-negotiable machine safety limits?",
+          "options": [
+            "Only the natural-language prompt.",
+            "Independent validated safety/low-level mechanisms.",
+            "A video demo."
+          ],
+          "answer": 1,
+          "why": "Safety-critical controls should not depend on an unconstrained language model."
+        },
+        {
+          "question": "Your robot detects a box correctly, but misses grasps by 6 cm consistently. Where should you inspect first?",
+          "options": [
+            "Camera-to-robot frame calibration and coordinate transforms.",
+            "The marketing slide.",
+            "Only policy model size."
+          ],
+          "answer": 0,
+          "why": "Systematic spatial offsets often indicate calibration or frame errors."
+        }
+      ],
+      "passing": 4
+    },
+    "blue": {
+      "questions": [
+        {
+          "question": "Which factor can cause sim-to-real mismatch?",
+          "options": [
+            "Contact friction mismatch.",
+            "A slide title.",
+            "A folder name."
+          ],
+          "answer": 0,
+          "why": "Incorrect friction changes interaction outcomes and learned behavior."
+        },
+        {
+          "question": "Which property best strengthens a predictive virtual twin claim?",
+          "options": [
+            "Matching marketing language.",
+            "Quantified comparison against real measurements.",
+            "A photorealistic floor texture."
+          ],
+          "answer": 1,
+          "why": "Validation against relevant real data underpins prediction credibility."
+        },
+        {
+          "question": "Why randomize simulator parameters?",
+          "options": [
+            "To remove the need to evaluate.",
+            "To expose training to plausible variability.",
+            "To make the CAD file larger."
+          ],
+          "answer": 1,
+          "why": "Variation can improve robustness to expected deployment differences."
+        },
+        {
+          "question": "Which dataset property is particularly important for behavior cloning?",
+          "options": [
+            "Representative observation–action demonstrations.",
+            "Only a product image.",
+            "An empty URDF."
+          ],
+          "answer": 0,
+          "why": "Behavior cloning learns from demonstrated states and actions."
+        },
+        {
+          "question": "Your policy succeeds 95% in simulation but 55% on hardware. Which response is strongest?",
+          "options": [
+            "Declare success because simulation is faster.",
+            "Investigate reality gap, instrumentation and task-specific failure modes.",
+            "Delete the failed trials."
+          ],
+          "answer": 1,
+          "why": "Real-world metrics govern real-world claims."
+        }
+      ],
+      "passing": 4
+    },
+    "brown": {
+      "questions": [
+        {
+          "question": "What best describes a VLA?",
+          "options": [
+            "A model conditioning robot actions on vision and language.",
+            "A 3D file format.",
+            "A safety certification."
+          ],
+          "answer": 0,
+          "why": "VLA stands for vision-language-action."
+        },
+        {
+          "question": "What is a crucial test of an adapted robot model?",
+          "options": [
+            "Runs only in a vendor video.",
+            "Measured success on held-out task conditions.",
+            "Model parameter count alone."
+          ],
+          "answer": 1,
+          "why": "Held-out evaluation tests generalization beyond the training distribution."
+        },
+        {
+          "question": "What is a sound first step before live robot deployment?",
+          "options": [
+            "Direct uncontrolled trial on the production floor.",
+            "Documented validation in bounded conditions.",
+            "Ignoring out-of-distribution states."
+          ],
+          "answer": 1,
+          "why": "Robotics needs staged testing and explicit risk controls."
+        },
+        {
+          "question": "Where should the emergency-stop function live?",
+          "options": [
+            "Inside an unconstrained LLM response.",
+            "Within validated independent safety mechanisms.",
+            "In the project README only."
+          ],
+          "answer": 1,
+          "why": "Unpredictable generative models should not serve as sole safety controllers."
+        },
+        {
+          "question": "A high-level language agent outputs a new grasp command during unexpected human entry. What must prevail?",
+          "options": [
+            "The agent’s newest instruction.",
+            "Independently enforced safety constraints and stop behavior.",
+            "The most confident natural-language explanation."
+          ],
+          "answer": 1,
+          "why": "Safety systems must remain authoritative regardless of model output."
+        }
+      ],
+      "passing": 4
+    },
+    "black": {
+      "questions": [
+        {
+          "question": "What is the strongest measure of an integrated Physical AI system?",
+          "options": [
+            "How many AI products are named on the slide.",
+            "Traceable behavior validated against requirements and constraints.",
+            "The model token count."
+          ],
+          "answer": 1,
+          "why": "System-level evidence is more meaningful than an untested architecture diagram."
+        },
+        {
+          "question": "What is justified by a successful robotics interface prototype?",
+          "options": [
+            "Only the tested behavior under defined conditions.",
+            "That all robot cells can be created through any API.",
+            "That any URDF can produce a fully simulated factory."
+          ],
+          "answer": 0,
+          "why": "Scope and document each independently verified operation."
+        },
+        {
+          "question": "What makes a benchmark reproducible?",
+          "options": [
+            "Unrecorded manual intervention.",
+            "Frozen inputs, versions, metrics and evaluation protocol.",
+            "Only positive examples."
+          ],
+          "answer": 1,
+          "why": "Repeatability and controls reduce benchmark ambiguity."
+        },
+        {
+          "question": "Which deliverable demonstrates the strongest capstone discipline?",
+          "options": [
+            "A polished demo with no audit trail.",
+            "A testable system with traceable assumptions and measured limits.",
+            "A large prompt with no validation."
+          ],
+          "answer": 1,
+          "why": "A defensible system separates verified capabilities from aspirations."
+        },
+        {
+          "question": "A prototype performs one authenticated robotics API operation. What follows?",
+          "options": [
+            "Complete factory automation is production-ready.",
+            "That specific operation has supporting evidence; broader claims need further tests.",
+            "Robot policies must already be trained."
+          ],
+          "answer": 1,
+          "why": "Verify each additional operation separately using a reproducible protocol."
+        }
+      ],
+      "passing": 4
+    }
+  },
+  "glossary": [
+    {
+      "term": "Actuator",
+      "definition": "Device that converts control energy into mechanical motion or force."
+    },
+    {
+      "term": "Action policy",
+      "definition": "Mapping from observations or states to commands or action sequences."
+    },
+    {
+      "term": "AMR",
+      "definition": "Autonomous Mobile Robot: mobile platform that localizes and navigates with autonomy."
+    },
+    {
+      "term": "AGV",
+      "definition": "Automated Guided Vehicle: often follows guided or constrained paths in facilities."
+    },
+    {
+      "term": "Behavior cloning",
+      "definition": "Imitation-learning approach supervised by recorded expert observation–action examples."
+    },
+    {
+      "term": "CAD",
+      "definition": "Computer-Aided Design; geometric and engineering design representation."
+    },
+    {
+      "term": "Collision geometry",
+      "definition": "Geometric shapes used to approximate collision and contact behavior."
+    },
+    {
+      "term": "Control loop",
+      "definition": "Feedback process that observes and corrects deviations over time."
+    },
+    {
+      "term": "Digital twin",
+      "definition": "Digital representation tied to a defined real system/use case; predictive uses require validation."
+    },
+    {
+      "term": "DOF",
+      "definition": "Degree of freedom: independent variable describing permissible motion."
+    },
+    {
+      "term": "Domain randomization",
+      "definition": "Training across varied simulated conditions to improve robustness."
+    },
+    {
+      "term": "End effector",
+      "definition": "Tool or gripper attached to a robot manipulator."
+    },
+    {
+      "term": "Encoder",
+      "definition": "Sensor that measures motor shaft or joint position/motion."
+    },
+    {
+      "term": "Frame",
+      "definition": "Named coordinate system for expressing points, orientations and transformations."
+    },
+    {
+      "term": "Forward kinematics",
+      "definition": "Compute end-effector pose from joint configurations."
+    },
+    {
+      "term": "Grasp pose",
+      "definition": "Proposed position and orientation of a gripper relative to an object."
+    },
+    {
+      "term": "Imitation learning",
+      "definition": "Learn a behavior policy from demonstrations."
+    },
+    {
+      "term": "Impedance control",
+      "definition": "Control that shapes compliant force–motion response."
+    },
+    {
+      "term": "Inertia tensor",
+      "definition": "Matrix describing mass distribution for rotational dynamics."
+    },
+    {
+      "term": "Inverse kinematics",
+      "definition": "Find joint configurations that achieve a desired tool pose."
+    },
+    {
+      "term": "Jacobian",
+      "definition": "Local mapping between joint velocities and task-space velocities."
+    },
+    {
+      "term": "Joint",
+      "definition": "Constraint defining relative motion between two connected links."
+    },
+    {
+      "term": "Link",
+      "definition": "Rigid body in an articulated robot description."
+    },
+    {
+      "term": "Localization",
+      "definition": "Estimate a mobile robot pose within a map or world frame."
+    },
+    {
+      "term": "MJCF",
+      "definition": "MuJoCo Modeling XML Format for physics simulation models."
+    },
+    {
+      "term": "Motion planning",
+      "definition": "Compute paths or trajectories subject to physical and geometric constraints."
+    },
+    {
+      "term": "OpenUSD",
+      "definition": "Open Universal Scene Description for composed scene data and 3D workflows."
+    },
+    {
+      "term": "PPR",
+      "definition": "Products, Processes and Resources: a manufacturing engineering model."
+    },
+    {
+      "term": "Policy",
+      "definition": "Decision rule mapping state or observations into actions."
+    },
+    {
+      "term": "Pose",
+      "definition": "Position and orientation expressed relative to a coordinate frame."
+    },
+    {
+      "term": "Reinforcement learning",
+      "definition": "Train a policy to optimize reward through environment interaction."
+    },
+    {
+      "term": "ROS 2",
+      "definition": "Robot Operating System 2: middleware and tools for distributed robotics software."
+    },
+    {
+      "term": "RTF",
+      "definition": "Robot task frame; term usage varies by organization; define per project."
+    },
+    {
+      "term": "Sensor fusion",
+      "definition": "Combine multiple measurements to estimate system state."
+    },
+    {
+      "term": "Sim-to-real",
+      "definition": "Transfer and validation of behavior trained or tested in simulation on hardware."
+    },
+    {
+      "term": "SLAM",
+      "definition": "Simultaneous Localization and Mapping."
+    },
+    {
+      "term": "Synthetic data",
+      "definition": "Computer-generated training or testing observations or trajectories."
+    },
+    {
+      "term": "TCP",
+      "definition": "Tool Center Point: defined reference frame on a robot tool."
+    },
+    {
+      "term": "Trajectory",
+      "definition": "Time-parameterized motion path and associated dynamic quantities."
+    },
+    {
+      "term": "URDF",
+      "definition": "Unified Robot Description Format: XML robot link/joint model."
+    },
+    {
+      "term": "VLA",
+      "definition": "Vision–Language–Action model that predicts actions from visual/language context."
+    },
+    {
+      "term": "VLM",
+      "definition": "Vision–Language Model that processes images and language."
+    },
+    {
+      "term": "World model",
+      "definition": "Internal learned or explicit representation for predicting aspects of environment evolution."
+    },
+    {
+      "term": "Workspace",
+      "definition": "Set of reachable poses or positions under stated constraints."
+    },
+    {
+      "term": "xacro",
+      "definition": "XML macro language commonly used to generate structured URDF models."
+    },
+    {
+      "term": "Zero-shot",
+      "definition": "Performance on an unseen task without task-specific training; definition depends on evaluation setup."
+    },
+    {
+      "term": "Contact model",
+      "definition": "Simulation assumptions for collision response, force and friction."
+    }
+  ],
+  "sources": [
+    {
+      "id": "modern",
+      "name": "Modern Robotics — Lynch & Park",
+      "org": "Northwestern University",
+      "url": "https://modernrobotics.northwestern.edu/",
+      "about": "Fundamental kinematics, dynamics, planning and control."
+    },
+    {
+      "id": "mit",
+      "name": "Underactuated Robotics",
+      "org": "MIT / Russ Tedrake",
+      "url": "https://underactuated.mit.edu/",
+      "about": "Rigorous control, dynamics, optimization and learning."
+    },
+    {
+      "id": "ros",
+      "name": "ROS 2 Documentation",
+      "org": "Open Robotics",
+      "url": "https://docs.ros.org/en/jazzy/Tutorials.html",
+      "about": "Nodes, topics, services, actions, package tutorials."
+    },
+    {
+      "id": "urdf",
+      "name": "ROS-Industrial URDF Introduction",
+      "org": "ROS-Industrial",
+      "url": "https://ros-industrial.github.io/ros2_i_training/_source/urdf/introduction.html",
+      "about": "Robot links, joints, visual/collision/inertial descriptions and limitations."
+    },
+    {
+      "id": "moveit",
+      "name": "MoveIt 2 Documentation",
+      "org": "MoveIt",
+      "url": "https://moveit.picknik.ai/",
+      "about": "Planning, kinematics, manipulation and collision checking."
+    },
+    {
+      "id": "mujoco",
+      "name": "MuJoCo Documentation",
+      "org": "Google DeepMind",
+      "url": "https://mujoco.readthedocs.io/en/stable/overview.html",
+      "about": "Contact-rich articulated-body physics and model concepts."
+    },
+    {
+      "id": "isaac",
+      "name": "Isaac Lab Documentation",
+      "org": "NVIDIA",
+      "url": "https://isaac-sim.github.io/IsaacLab/main/index.html",
+      "about": "Robot-learning environments, reinforcement learning and sim-to-real."
+    },
+    {
+      "id": "lerobot",
+      "name": "LeRobot Documentation",
+      "org": "Hugging Face",
+      "url": "https://huggingface.co/docs/lerobot/en/index",
+      "about": "Robot datasets, teleoperation, imitation-learning and policies."
+    },
+    {
+      "id": "hfcourse",
+      "name": "Robotics Course",
+      "org": "Hugging Face",
+      "url": "https://huggingface.co/learn/robotics-course/en/unit0/1",
+      "about": "Beginner-accessible classical and learning-based robotics."
+    },
+    {
+      "id": "rt2",
+      "name": "RT-2 Vision–Language–Action",
+      "org": "Google DeepMind",
+      "url": "https://deepmind.google/blog/rt-2-new-model-translates-vision-and-language-into-action/",
+      "about": "Research account of vision-language-action robot policies."
+    },
+    {
+      "id": "nvidia",
+      "name": "Physical AI models and robotics stack",
+      "org": "NVIDIA",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-releases-new-physical-ai-models-as-global-partners-unveil-next-generation-robots",
+      "about": "Vendor announcement (read claims critically and date them)."
+    }
+  ]
+};
+
+</script>
+  <script>
+(() => {
+'use strict';
+const D = window.__ACADEMY_DATA__;
+const KEY='physical-ai-academy-progress-v1';
+const BL = Object.fromEntries(D.belts.map(x=>[x.id,x]));
+const SR = Object.fromEntries(D.sources.map(x=>[x.id,x]));
+const defaults=()=>({version:1,completed:{},examPass:{},labSteps:{},labEvidence:{},notes:{},lastLesson:null});
+let store=defaults();
+try { const raw=JSON.parse(localStorage.getItem(KEY)||'null'); if(raw&&raw.version===1)store={...defaults(),...raw}; } catch(e) { /* local save not available */ }
+let view='overview', filter='all', search='', modal=null, quizChoice=null, quizFeedback=null, examChoice={}, examFeedback=null, angle1=-30, angle2=60, toastTimer;
+const E = s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const $$=id=>document.getElementById(id);
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){notify('Your browser blocked local progress storage. Export progress manually.')}};
+const numDone=()=>D.lessons.filter(x=>store.completed[x.id]).length;
+const beltLessons=b=>D.lessons.filter(l=>l.belt===b);
+const beltCount=b=>beltLessons(b).filter(l=>store.completed[l.id]).length;
+const labIndex=b=>D.belts.findIndex(x=>x.id===b);
+const beltEarned=b=>beltCount(b)===4&&!!store.examPass[b]&&!!store.labEvidence[b];
+const earnedCount=()=>D.belts.filter(b=>beltEarned(b.id)).length;
+const currentBelt=()=>D.belts.find(b=>!beltEarned(b.id))||D.belts[D.belts.length-1];
+const pct=(done,all)=>Math.round(100*done/all);
+const icon=(type)=>{
+ const path={home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',book:'<path d="M3 19V5a2 2 0 0 1 2-2h16v18H5a2 2 0 0 1 0-4h16"/>',flask:'<path d="M9 3h6M10 3v7l-6 9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l-6-9V3M7 16h10"/>',brain:'<path d="M12 5a3 3 0 0 0-5.5-1.7A4 4 0 0 0 4 10a4 4 0 0 0 1 7 4 4 0 0 0 7 3V5ZM12 5a3 3 0 0 1 5.5-1.7A4 4 0 0 1 20 10a4 4 0 0 1-1 7 4 4 0 0 1-7 3V5Z"/>',library:'<path d="M4 4h4v17H4zM10 2h4v19h-4zM16 5l4-1 2 17-4 1z"/>',settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .3 1.8l-1.8 1.8a1.65 1.65 0 0 0-1.8-.3 1.65 1.65 0 0 0-1 1.5h-2.6a1.65 1.65 0 0 0-1-1.5 1.65 1.65 0 0 0-1.8.3L7 16.8a1.65 1.65 0 0 0 .3-1.8 1.65 1.65 0 0 0-1.5-1H4v-2.6h1.8a1.65 1.65 0 0 0 1.5-1A1.65 1.65 0 0 0 7 8.6L8.8 6.8a1.65 1.65 0 0 0 1.8.3 1.65 1.65 0 0 0 1-1.5H14a1.65 1.65 0 0 0 1 1.5 1.65 1.65 0 0 0 1.8-.3l1.8 1.8a1.65 1.65 0 0 0-.3 1.8 1.65 1.65 0 0 0 1.5 1H22V14h-1.8a1.65 1.65 0 0 0-.8 1Z"/>',target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',check:'<path d="m5 12 4 4L19 6"/>',arrow:'<path d="M5 12h14m-7-7 7 7-7 7"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/>',shield:'<path d="m12 2 9 4v6c0 5-3.5 8-9 10-5.5-2-9-5-9-10V6z"/>',spark:'<path d="m12 2 2.7 6.3L21 11l-6.3 2.7L12 20l-2.7-6.3L3 11l6.3-2.7z"/>',menu:'<path d="M4 7h16M4 12h16M4 17h16"/>'}[type]||'<circle cx="12" cy="12" r="9"/>';
+ return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${path}</svg>`;
+};
+const beltMark=b=>`<span class="dot" style="background:${BL[b].color};border:1px solid #0002"></span>`;
+const navItem=(id,name,ico)=>`<button class="nav-item ${view===id?'active':''}" data-view="${id}">${icon(ico)}<span>${name}</span></button>`;
+const notify=msg=>{document.querySelector('.toast')?.remove();const n=document.createElement('div');n.className='toast';n.setAttribute('role','status');n.textContent=msg;document.body.appendChild(n);clearTimeout(toastTimer);toastTimer=setTimeout(()=>n.remove(),3800);};
+function shell(content){let active=currentBelt(); return `<div class="app-shell"><div class="nav-shade" id="nav-shade" data-menuclose="1"></div>
+<aside class="sidebar" id="sidebar"><div class="brand"><div class="brand-mark">${icon('brain')}</div><div><div class="brand-name">PHYSICAL AI</div><div class="brand-sub">ACADEMY / 01</div></div></div>
+<div class="nav-caption">LEARNING SPACE</div>${navItem('overview','Overview','home')}${navItem('curriculum','Curriculum','book')}${navItem('labs','Practice labs','flask')}${navItem('glossary','Glossary','library')}
+<div class="nav-caption">RESOURCES</div>${navItem('sources','Verified sources','target')}${navItem('settings','Progress & data','settings')}
+<div class="sidebar-bottom"><div class="overline">CURRENT JOURNEY</div><p><span style="display:inline-block;width:10px;height:10px;background:${active.color};border:1px solid #98a7ba;border-radius:2px;margin-right:7px"></span><b style="color:white">${E(active.name)} belt</b> · ${earnedCount()} / 7 earned</p><div class="progress"><span style="width:${pct(numDone(),28)}%"></span></div><p>${numDone()} of 28 lessons passed. Progress stays in this browser until exported.</p></div>
+</aside><main class="main"><header class="topbar"><div class="topbar-left"><button class="menu-btn mobile-top" data-menu="1" aria-label="Open navigation">${icon('menu')}</button><div><div class="top-title">PHYSICAL AI ACADEMY</div><div class="top-sub">Independent learning path · 7 judo-belt levels</div></div></div><div class="top-actions"><span class="chip">${beltMark(active.id)} ${E(active.name)} belt · in training</span><button class="button small-btn outline" data-view="settings">${icon('download')} Export progress</button></div></header>${content}
+<footer class="footer"><span>© Physical AI Academy · Original educational curriculum · v${E(D.version)} · ${E(D.updated)}</span><span>Self-assessed belt system · Not an accredited robotics qualification</span></footer></main></div>`;}
+const heroRobot=()=>`<svg viewBox="0 0 430 330" role="img" aria-label="Stylized industrial robot arm with articulated joints and gripper"><defs><linearGradient id="armGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a8e6f4"/><stop offset="47%" stop-color="#2b98c9"/><stop offset="100%" stop-color="#1b517d"/></linearGradient></defs><g opacity=".38" fill="none" stroke="#3b7baa"><circle cx="235" cy="165" r="124" stroke-dasharray="4 10"/><circle cx="235" cy="165" r="88"/><path d="M30 265h370M225 25v288M55 55l320 220" stroke-dasharray="3 8"/></g><g transform="translate(8 0)"><path d="M125 274h112l10 21H111z" fill="#183d64" stroke="#73d6df" stroke-width="2"/><rect x="141" y="254" width="73" height="24" rx="6" fill="#3877a7" stroke="#9bd9e3" stroke-width="2"/><circle cx="176" cy="247" r="29" fill="#0c3154" stroke="#75d5df" stroke-width="5"/><path d="M177 247 128 166" stroke="#1d537f" stroke-width="43" stroke-linecap="round"/><path d="M177 247 128 166" stroke="url(#armGradient)" stroke-width="34" stroke-linecap="round"/><circle cx="128" cy="166" r="29" fill="#183653" stroke="#84dfde" stroke-width="5"/><circle cx="128" cy="166" r="13" fill="#3baad0"/><path d="M132 163 254 109" stroke="#1b4770" stroke-width="38" stroke-linecap="round"/><path d="M132 163 254 109" stroke="url(#armGradient)" stroke-width="29" stroke-linecap="round"/><circle cx="254" cy="109" r="24" fill="#153c60" stroke="#a7e6ef" stroke-width="5"/><circle cx="254" cy="109" r="9" fill="#0c729f"/><path d="M254 109 302 139" stroke="#215c86" stroke-width="25" stroke-linecap="round"/><path d="M254 109 302 139" stroke="#58b8d0" stroke-width="16" stroke-linecap="round"/><circle cx="302" cy="139" r="17" fill="#0b3459" stroke="#78d8eb" stroke-width="4"/><path d="M314 139 330 158" stroke="#8de5e7" stroke-width="12" stroke-linecap="round"/><path d="M336 163l11 16m-11-16-10 18" stroke="#a2f1ea" stroke-width="6" stroke-linecap="round"/><path d="M348 179 361 189m-36-8-9 15" stroke="#a2f1ea" stroke-width="5" stroke-linecap="round"/></g><g fill="#57e4da"><circle cx="254" cy="109" r="3"/><circle cx="136" cy="167" r="3"/><circle cx="177" cy="247" r="3"/></g><g fill="#b7eeff" font-family="sans-serif" font-size="10"><text x="258" y="65">J2</text><text x="78" y="146">J1</text><text x="222" y="254">BASE</text><text x="338" y="128">TCP</text></g><g stroke="#3bd9cd" fill="none" opacity=".75"><path d="M355 142l17-24h29"/><path d="M258 101l18-25h38"/></g></svg>`;
+function renderOverview(){const active=currentBelt();let next=D.lessons.find(l=>!store.completed[l.id])||D.lessons[D.lessons.length-1];return `<section class="hero"><div class="hero-body"><div class="hero-kicker">ROBOTICS / EMBODIED INTELLIGENCE / PHYSICAL AI</div><h1>Learn the body.<br/>Understand the <span>brain.</span></h1><p class="hero-desc">A rigorous, hands-on journey from robot anatomy and kinematics to simulation, learned policies and complete Physical AI systems. Earn progress like a judoka: one belt at a time.</p><div class="hero-buttons"><button class="button light" data-lesson="${E(next.id)}">${icon('arrow')} ${numDone()?'Continue learning':'Start white belt'}</button><button class="button outline" style="color:white;border-color:#59819c" data-view="curriculum">Explore curriculum</button></div></div><div class="hero-visual">${heroRobot()}<div class="hero-float"><span class="float-label">SENSE → REASON → ACT</span><span class="float-label">7 BELTS · 28 LESSONS</span></div></div></section>
+<div class="metrics"><div class="metric"><div><div class="metric-number">${numDone()}<span class="muted" style="font-size:18px">/28</span></div><div class="metric-label">Knowledge checks passed</div></div><div class="metric-icon">${icon('book')}</div></div><div class="metric"><div><div class="metric-number">${earnedCount()}<span class="muted" style="font-size:18px">/7</span></div><div class="metric-label">Belts earned</div></div><div class="metric-icon">${icon('target')}</div></div><div class="metric"><div><div class="metric-number">${D.labs.filter(x=>store.labEvidence[x.belt]).length}<span class="muted" style="font-size:18px">/7</span></div><div class="metric-label">Practical labs declared</div></div><div class="metric-icon">${icon('flask')}</div></div></div>
+<div class="section-head"><div><h2>Your seven-belt journey</h2><p>Four lessons, one examination and one practical exercise per belt.</p></div><button class="button small-btn outline" data-view="curriculum">All lessons ${icon('arrow')}</button></div>
+<div class="belt-grid">${D.belts.map(b=>`<article class="belt-card"><div class="belt-status">${beltEarned(b.id)?'✓ EARNED':(b.id===active.id?'● CURRENT':'LEVEL '+b.rank)}</div><div class="belt-strip" style="background:${b.color};${b.id==='white'?'border:1px solid #ccd7e4':''}"></div><div class="overline" style="color:#8b9fb2;font-size:9px">${E(b.theme)}</div><h3>${E(b.name)} belt</h3><p>${E(b.focus)}</p><div class="belt-btm"><div class="caption"><span>${beltCount(b.id)}/4 lessons</span><span>${store.examPass[b.id]?'Exam passed': 'Exam pending'}</span></div><div class="progress"><span style="background:${b.color};${b.id==='white'?'box-shadow:inset 0 0 0 1px #ccd7e4':''}width:${pct(beltCount(b.id),4)}%"></span></div><button class="button small-btn outline" data-belt="${b.id}">View belt ${icon('arrow')}</button></div></article>`).join('')}</div>
+<div class="section-head"><div><h2>Continue training</h2><p>Designed to move from theory to verified behavior.</p></div></div>
+<div class="next-panel"><article class="panel feature-panel"><div><div class="label-icon">${icon('book')}</div><div class="overline">UP NEXT · ${E(BL[next.belt].name.toUpperCase())} BELT · ${next.minutes} MIN</div><h3 style="font-size:21px;margin-top:8px">${E(next.title)}</h3><p class="muted" style="font-size:12px;line-height:1.7">${E(next.objectives)}</p></div><button class="button primary" data-lesson="${next.id}">Open lesson ${icon('arrow')}</button></article><article class="panel"><div class="label-icon">${icon('brain')}</div><h3>The Physical AI loop</h3><p class="muted" style="font-size:11px">A practical mental model, not a claim that all robots use the same architecture.</p><div class="outline-pipeline"><div class="pipeline-node">Sense</div><div class="pipeline-node">Estimate</div><div class="pipeline-node">Plan</div><div class="pipeline-node">Control</div><div class="pipeline-node">Act</div></div><p class="mini-note">Feedback closes the loop. Learning can improve perception, planning or the action policy; validated safety functions enforce hard limits.</p></article></div>`;}
+function renderCurriculum(){const visible=D.lessons.filter(l=>filter==='all'||l.belt===filter);return `<div class="page-heading"><div class="overline">LEARNING PATH / 28 LESSONS</div><h1>Course curriculum</h1><p>Build conceptual foundations first, then progress into motion, simulation, learning and real-world systems. All lessons remain open for exploration.</p></div><input id="curriculum-search" class="search" aria-label="Search courses" type="search" placeholder="Search concepts: URDF, safety, ROS 2, VLA…" value="${E(search)}" /><div class="filters"><button class="filter ${filter==='all'?'active':''}" data-filter="all">All belts</button>${D.belts.map(b=>`<button class="filter ${filter===b.id?'active':''}" data-filter="${b.id}"><i style="background:${b.color};border:1px solid #0002"></i>${E(b.name)}</button>`).join('')}</div><div class="lesson-grid" id="lesson-grid">${visible.map(l=>`<article class="lesson-card" data-filtertext="${E((l.title+' '+l.objectives+' '+BL[l.belt].name).toLowerCase())}"><div class="lesson-meta"><span>${beltMark(l.belt)}${E(BL[l.belt].name.toUpperCase())} · ${E(l.id)}</span><span>◷ ${l.minutes} min</span></div><h3>${E(l.title)}</h3><p>${E(l.objectives)}</p><div class="card-footer"><span class="status-text ${store.completed[l.id]?'status-ok':''}">${store.completed[l.id]?'✓ Check passed':'○ Not yet passed'}</span><button class="button small-btn outline" data-lesson="${l.id}">Study ${icon('arrow')}</button></div></article>`).join('')}</div><div class="empty" id="no-results" style="display:none">No lessons match that search.</div>`;}
+function renderBelt(bid){const b=BL[bid], lessons=beltLessons(bid), lab=D.labs[labIndex(bid)], ready=beltCount(bid)===4;return `<div class="page-heading"><div class="overline">LEVEL ${b.rank} OF 7 · THE ${E(b.theme.toUpperCase())}</div><div style="display:flex;align-items:center;gap:16px;margin:13px 0"><span style="width:64px;height:17px;border-radius:4px;background:${b.color};border:1px solid #0002;flex-shrink:0"></span><h1 style="margin:0">${E(b.name)} belt</h1></div><p>${E(b.tagline)} · ${E(b.duration)} of suggested study time.</p></div>
+<div class="metrics" style="margin-bottom:22px"><div class="metric"><div><div class="metric-number">${beltCount(bid)}/4</div><div class="metric-label">Lessons passed</div></div></div><div class="metric"><div><div class="metric-number">${store.examPass[bid]?'PASS':'—'}</div><div class="metric-label">Belt examination</div></div></div><div class="metric"><div><div class="metric-number">${store.labEvidence[bid]?'DONE':'—'}</div><div class="metric-label">Practical evidence declared</div></div></div></div>
+<div class="section-head"><div><h2>Learn the discipline</h2><p>Pass each knowledge check before attempting promotion.</p></div></div><div class="lesson-grid">${lessons.map(l=>`<article class="lesson-card"><div class="lesson-meta"><span>${E(l.id)}</span><span>◷ ${l.minutes} min</span></div><h3>${E(l.title)}</h3><p>${E(l.objectives)}</p><div class="card-footer"><span class="status-text ${store.completed[l.id]?'status-ok':''}">${store.completed[l.id]?'✓ Check passed':'○ To study'}</span><button class="button small-btn outline" data-lesson="${l.id}">Study ${icon('arrow')}</button></div></article>`).join('')}</div>
+<div class="section-head"><div><h2>Promotion test</h2><p>All three conditions are required to earn a belt.</p></div></div><div class="next-panel"><article class="panel"><div class="overline">KNOWLEDGE</div><h3 style="margin-top:9px">${E(b.name)} belt exam</h3><p class="muted" style="font-size:12px">Five questions · at least four correct (80%). Knowledge checks should be passed first; exam completion is recorded separately.</p><button class="button ${store.examPass[bid]?'dark':'primary'}" data-exam="${bid}">${store.examPass[bid]?'Retake exam':'Take belt exam'} ${icon('arrow')}</button></article><article class="panel"><div class="overline">PRACTICE</div><h3 style="margin-top:9px">${E(lab.name)}</h3><p class="muted" style="font-size:12px">${E(lab.brief)}</p><button class="button outline" data-labjump="${bid}">Open practical assignment ${icon('arrow')}</button></article></div>
+<div class="notice">${beltEarned(bid)?'<b>Promotion recorded.</b> All checks are complete. This is a self-assessed learning milestone, not professional certification.':`<b>Promotion requirements:</b> four lesson checks (${beltCount(bid)}/4), an exam score ≥80% (${store.examPass[bid]?'passed':'pending'}), and an explicitly declared completed practical deliverable (${store.labEvidence[bid]?'complete':'pending'}).`}</div>`;}
+function renderLabs(){return `<div class="page-heading"><div class="overline">HANDS-ON / SEVEN ASSIGNMENTS</div><h1>Practice labs</h1><p>Build real engineering intuition. All work can begin with paper, Python, public datasets or simulation; physical hardware is not required to learn the concepts.</p></div>
+<section class="panel" style="margin-bottom:24px"><div class="overline">INTERACTIVE MINI-SIMULATION / ORANGE BELT</div><h3 style="font-size:20px;margin:10px 0 6px">Two-link robot arm · forward kinematics</h3><p class="muted" style="font-size:12px">Adjust both joint angles to see how different configurations place the end effector. Link lengths are fixed at 1.00 m and 0.75 m. This is a geometric teaching model, not a dynamics simulator.</p><div class="joint-playground"><div class="joint-canvas"><svg id="armViz" viewBox="0 0 390 245" role="img" aria-label="Interactive two-joint planar robot arm"></svg></div><div><div class="range-row"><label for="angle1">Shoulder q₁ <b id="q1read">${angle1}°</b></label><input id="angle1" type="range" min="-180" max="180" step="1" value="${angle1}"/></div><div class="range-row"><label for="angle2">Elbow q₂ <b id="q2read">${angle2}°</b></label><input id="angle2" type="range" min="-180" max="180" step="1" value="${angle2}"/></div><div class="joint-readout" id="xyread"></div><p class="mini-note">x = L₁ cos(q₁) + L₂ cos(q₁+q₂)<br/>y = L₁ sin(q₁) + L₂ sin(q₁+q₂)</p></div></div></section>
+<div class="lab-grid">${D.labs.map((lab,i)=>{const b=BL[lab.belt],steps=store.labSteps[lab.belt]||{};let count=lab.steps.filter((_,idx)=>steps[idx]).length;return `<article class="lab-card" id="lab-${lab.belt}"><div class="lesson-meta"><span>${beltMark(lab.belt)}${E(b.name.toUpperCase())} BELT</span><span>◷ ${E(lab.duration)}</span></div><h3>${E(lab.name)}</h3><p>${E(lab.brief)}</p><div class="lab-progress">${count}/${lab.steps.length} checkpoints prepared</div><div class="lab-steps">${lab.steps.map((step,ix)=>`<label class="lab-step"><input type="checkbox" data-labstep="${lab.belt}:${ix}" ${steps[ix]?'checked':''}/><span>${E(step)}</span></label>`).join('')}</div><div class="lab-deliverable"><b>Deliverable</b>: ${E(lab.deliverable)}<br/><b>Acceptance criterion</b>: ${E(lab.criteria)}</div><div class="lab-cert"><label><input type="checkbox" data-evidence="${lab.belt}" ${store.labEvidence[lab.belt]?'checked':''} ${count!==lab.steps.length?'disabled':''}/><span>I have actually completed this deliverable and checked it against the acceptance criterion <span class="muted">(self-declaration)</span>.</span></label></div></article>`}).join('')}</div>`;}
+function renderGlossary(){return `<div class="page-heading"><div class="overline">KNOWLEDGE REFERENCE / ${D.glossary.length} TERMS</div><h1>Robotics glossary</h1><p>Short, engineering-focused definitions. Search while studying a lesson or when preparing a technical review.</p></div><input class="search" id="term-search" type="search" placeholder="Search URDF, kinematics, policy, PPR…" aria-label="Search glossary"/><div class="section-head"><div><h2>Terms and definitions</h2></div></div><div class="glossary-grid" id="glossary-grid">${D.glossary.map(g=>`<article class="term" data-filtertext="${E((g.term+' '+g.definition).toLowerCase())}"><strong>${E(g.term)}</strong><p>${E(g.definition)}</p></article>`).join('')}</div><div class="empty" id="no-results" style="display:none">No matching terms.</div>`;}
+function renderSources(){return `<div class="page-heading"><div class="overline">EVIDENCE / PRIMARY REFERENCES</div><h1>Verified learning sources</h1><p>Curated links to institutional teaching, official software documentation and original research. Links were inspected for this academy on 1 November 2026; online documentation can subsequently change.</p></div><div class="source-grid">${D.sources.map(s=>`<article class="source-card"><h3>${E(s.name)}</h3><div class="source-org">${E(s.org)}</div><p>${E(s.about)}</p>${s.url?`<a href="${E(s.url)}" target="_blank" rel="noopener noreferrer" class="small">Visit source ↗</a>`:'<span class="muted small">See linked documentation</span>'}</article>`).join('')}</div><div class="notice"><b>Evidence standard:</b> Vendor pages are references to capabilities and claims, not independent proof of performance. A successful interface prototype validates only the operations it actually tests; robot placement, motion simulation and integrated safety must each be verified separately.</div>`;}
+function renderSettings(){return `<div class="page-heading"><div class="overline">YOUR DATA / SELF-PACED</div><h1>Progress & data</h1><p>Your training record is stored on this device in your browser. Export it if you want to transfer or back up progress. No account or cloud backend is included in this offline edition.</p></div><div class="settings-grid"><article class="panel"><h3>Academy progress</h3><p>Passed lessons: <b>${numDone()} / 28</b>. Belt examinations: <b>${Object.values(store.examPass).filter(Boolean).length} / 7</b>. Practical assignments declared: <b>${D.labs.filter(x=>store.labEvidence[x.belt]).length} / 7</b>. Earned belts: <b>${earnedCount()} / 7</b>.</p><div class="progress" style="margin:15px 0"><span style="width:${pct(numDone(),28)}%"></span></div><div class="settings-actions"><button class="button primary" data-export="1">${icon('download')} Export progress JSON</button><button class="button outline" data-import="1">Import progress JSON</button><input type="file" id="importfile" accept=".json,application/json" hidden/></div></article><article class="panel"><h3>How belts are awarded</h3><p>Each belt requires four correct lesson knowledge checks, a five-question promotion exam with at least 80%, and a checked practical deliverable. Practical evidence is <b>self-declared</b> and is not externally assessed. All content remains browsable whether or not you have earned earlier belts.</p></article><article class="panel"><h3>Start a fresh training record</h3><p>Only resets academy progress in this local browser. Export your data first if you want to preserve it.</p><button class="button danger" data-reset="1">Reset all local progress</button></article></div>`;}
+function render(){const pages={overview:renderOverview,curriculum:renderCurriculum,labs:renderLabs,glossary:renderGlossary,sources:renderSources,settings:renderSettings};$$('app').innerHTML=shell((pages[view]||renderOverview)());if(modal)drawModal(); if(view==='labs')drawArm();if(view==='curriculum')applySearch('lesson-grid',search);}
+const filterCards=(grid,text)=>{let matches=0;document.querySelectorAll('#'+grid+' [data-filtertext]').forEach(el=>{const shown=el.dataset.filtertext.includes(text.trim().toLowerCase());el.style.display=shown?'':'none';if(shown)matches++;});const n=$$('no-results');if(n)n.style.display=matches?'none':'block';};
+const applySearch=(grid,text)=>filterCards(grid,text);
+function openLesson(id){const l=D.lessons.find(x=>x.id===id);if(!l)return;modal={type:'lesson',id};quizChoice=null;quizFeedback=null;store.lastLesson=id;save();drawModal();}
+function lessonBody(l){const b=BL[l.belt], passed=!!store.completed[l.id];return `<div class="overlay" data-overlay="1"><section class="modal" role="dialog" aria-modal="true" aria-label="${E(l.title)}"><div class="modal-head"><button class="close" data-close="1" aria-label="Close lesson">×</button><div class="overline">${E(b.name.toUpperCase())} BELT · ${E(l.id)} · ${l.minutes} MIN</div><h2>${E(l.title)}</h2><p>${E(l.objectives)}</p><span style="display:inline-block;margin-top:9px;background:${b.color};width:76px;height:8px;border-radius:3px"></span></div><div class="modal-content"><div class="lesson-objective"><b>Learning goal:</b> ${E(l.objectives)}</div>${l.blocks.map((x,i)=>`<section class="lesson-section"><div class="overline">0${i+1} / CONCEPT</div><h3>${E(x.heading)}</h3><p>${E(x.body)}</p></section>`).join('')}${l.code?`<h3 style="margin:23px 0 10px">Inspect the model</h3><pre class="code-sample"><code>${E(l.code)}</code></pre>`:''}<div class="explain-box"><strong>ENGINEERING EXAMPLE</strong><p>${E(l.example)}</p></div><div class="explain-box caution"><strong>WATCH OUT / COMMON MISCONCEPTION</strong><p>${E(l.trap)}</p></div><div class="explain-box"><strong>YOUR PRACTICAL EXERCISE</strong><p>${E(l.task)}</p></div><h4 style="margin-top:28px">Go deeper</h4><div class="refs">${l.refs.map(s=>SR[s]?(SR[s].url?`<a class="ref-link" href="${E(SR[s].url)}" target="_blank" rel="noopener noreferrer">${E(SR[s].name)} ↗</a>`:`<span class="ref-link">${E(SR[s].name)}</span>`):'').join('')}</div><div class="quiz-box"><div class="overline">KNOWLEDGE CHECK ${passed?'· ALREADY PASSED':''}</div><h3>Can you explain it?</h3><div class="quiz-question">${E(l.question)}</div>${l.options.map((o,i)=>`<label class="answer-option ${quizChoice===i?'selected':''}"><input type="radio" name="lesson-choice" value="${i}" data-lessonchoice="${i}" ${quizChoice===i?'checked':''}/>${E(o)}</label>`).join('')}${quizFeedback?`<div class="answer-result ${quizFeedback.ok?'':'fail'}"><b>${quizFeedback.ok?'Correct — lesson check passed.':'Not quite — try again.'}</b> ${E(l.why)}</div>`:''}<div class="quiz-actions"><button class="button primary" data-checklesson="${l.id}" ${quizChoice===null?'disabled':''}>${passed?'Check again':'Check answer'} ${icon('check')}</button>${passed?`<button class="button outline" style="margin-left:8px" data-belt="${l.belt}">Back to belt ${icon('arrow')}</button>`:''}</div></div></div></section></div>`;}
+function examBody(bid){const b=BL[bid],exam=D.exams[bid],answers=examChoice[bid]||{};return `<div class="overlay" data-overlay="1"><section class="modal" role="dialog" aria-modal="true" aria-label="${E(b.name)} belt examination"><div class="modal-head"><button class="close" data-close="1" aria-label="Close examination">×</button><div class="overline">PROMOTION EXAM · ${E(b.name.toUpperCase())} BELT</div><h2>Show what you understand.</h2><p>Five questions. Four correct answers are required to pass. No time pressure; focus on sound engineering reasoning.</p></div><div class="modal-content"><div class="notice"><b>Progress:</b> ${beltCount(bid)} / 4 lessons checked. The exam can be explored at any time; promotion also requires all lesson checks and your practical assignment.</div>${exam.questions.map((q,qi)=>`<section class="exam-question"><div class="overline">QUESTION ${qi+1} OF 5</div><div class="quiz-question">${E(q.question)}</div>${q.options.map((o,j)=>`<label class="answer-option ${answers[qi]===j?'selected':''}"><input type="radio" name="exam${qi}" data-examchoice="${bid}:${qi}:${j}" ${answers[qi]===j?'checked':''}/>${E(o)}</label>`).join('')}</section>`).join('')}<div class="exam-footer">${examFeedback?`<div class="answer-result ${examFeedback.passed?'':'fail'}"><b>${examFeedback.passed?'Exam passed!':'Review and retry.'}</b> Score: ${examFeedback.score}/5 (${examFeedback.score*20}%). ${examFeedback.passed?'Your result is recorded.':'You need 4/5 correct to pass.'}<div style="margin-top:9px">${examFeedback.mistakes.map(x=>`<div>Q${x.q}: ${E(x.why)}</div>`).join('')}</div></div>`:''}<button class="button primary" data-submitexam="${bid}" ${Object.keys(answers).length!==5?'disabled':''}>Submit examination ${icon('arrow')}</button></div></div></section></div>`;}
+function drawModal(){if(!modal){document.querySelector('#modalhost')?.remove();return;}let old=$$('modalhost');const previousScroll=old?.querySelector('.modal-content')?.scrollTop||0;if(old)old.remove();let host=document.createElement('div');host.id='modalhost';host.innerHTML=modal.type==='lesson'?lessonBody(D.lessons.find(l=>l.id===modal.id)):examBody(modal.id);document.body.appendChild(host);document.body.style.overflow='hidden';const pane=host.querySelector('.modal-content');if(pane)pane.scrollTop=previousScroll;}
+function closeModal(){modal=null;document.querySelector('#modalhost')?.remove();document.body.style.overflow='';render();}
+function navigate(newView){modal=null;document.querySelector('#modalhost')?.remove();document.body.style.overflow='';view=newView;render();window.scrollTo({top:0,behavior:'smooth'});}
+function drawArm(){const svg=$$('armViz');if(!svg)return;const r1=angle1*Math.PI/180,r2=(angle1+angle2)*Math.PI/180;const x1=1*Math.cos(r1),y1=1*Math.sin(r1),x2=x1+.75*Math.cos(r2),y2=y1+.75*Math.sin(r2),scale=87,base=[195,126],p1=[base[0]+x1*scale,base[1]-y1*scale],p2=[base[0]+x2*scale,base[1]-y2*scale];const xy=p=>p.map(n=>n.toFixed(1)).join(',');svg.innerHTML=`<defs><pattern id="pgrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#d5e4f0" stroke-width=".7"/></pattern></defs><rect width="390" height="245" fill="url(#pgrid)"/><path d="M15 126H375M195 15V232" stroke="#b2c9db" stroke-dasharray="4 6"/><circle cx="195" cy="126" r="87" stroke="#6ab0dc" opacity=".25" stroke-width="1" fill="none"/><circle cx="195" cy="126" r="152" stroke="#6ab0dc" opacity=".25" stroke-width="1" fill="none"/><path d="M${xy(base)}L${xy(p1)}" stroke="#2c80bf" stroke-width="16" stroke-linecap="round"/><path d="M${xy(p1)}L${xy(p2)}" stroke="#2cbcb5" stroke-width="12" stroke-linecap="round"/><circle cx="${base[0]}" cy="${base[1]}" r="12" fill="#153d65" stroke="#79bbdb" stroke-width="3"/><circle cx="${p1[0]}" cy="${p1[1]}" r="10" fill="#17496f" stroke="#a2e7ea" stroke-width="3"/><circle cx="${p2[0]}" cy="${p2[1]}" r="7" fill="#ef8c59" stroke="#fff" stroke-width="3"/><g font-family="sans-serif" font-size="11" fill="#1e5275"><text x="201" y="149">base</text><text x="${p1[0]+11}" y="${p1[1]-9}">elbow</text><text x="${p2[0]+10}" y="${p2[1]-8}">TCP</text></g>`;$$('q1read').textContent=angle1+'°';$$('q2read').textContent=angle2+'°';$$('xyread').textContent=`TCP → x = ${x2.toFixed(3)} m, y = ${y2.toFixed(3)} m`;}
+function exportProgress(){const blob=new Blob([JSON.stringify({product:'Physical AI Academy',savedAt:new Date().toISOString(),progress:store},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='physical-ai-academy-progress.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('Progress JSON downloaded.');}
+function resetProgress(){if(!confirm('Reset all Physical AI Academy progress stored in this browser?'))return;store=defaults();save();render();notify('Local progress reset.');}
+async function importProgress(file){try{const raw=JSON.parse(await file.text());const x=raw.progress||raw;if(!x||x.version!==1||typeof x.completed!=='object'||typeof x.examPass!=='object')throw new Error('Unrecognized academy progress format');store={...defaults(),...x};save();render();notify('Progress imported.');}catch(e){notify('Could not import this JSON: '+e.message);}}
+const scrollToLab=bid=>{navigate('labs');setTimeout(()=>$$('lab-'+bid)?.scrollIntoView({behavior:'smooth',block:'center'}),80);};
+function setExamChoice(bid,qi,ai){examChoice[bid]=examChoice[bid]||{};examChoice[bid][qi]=ai;examFeedback=null;drawModal();}
+function submitExam(bid){const ex=D.exams[bid],responses=examChoice[bid]||{};if(Object.keys(responses).length!==5)return;const score=ex.questions.filter((q,i)=>responses[i]===q.answer).length,passed=score>=ex.passing; if(passed){store.examPass[bid]=true;save();}examFeedback={score,passed,mistakes:ex.questions.map((q,i)=>({q:i+1,why:q.why,correct:responses[i]===q.answer})).filter(x=>!x.correct)};drawModal();if(passed)notify(`${BL[bid].name} exam passed. Complete all requirements to earn the belt.`);}
+function quizSelect(i){quizChoice=i;quizFeedback=null;drawModal();}
+function checkLesson(id){const l=D.lessons.find(x=>x.id===id);if(!l||quizChoice===null)return;const ok=quizChoice===l.answer;quizFeedback={ok};if(ok){store.completed[id]=true;save();notify(`${l.title}: knowledge check passed.`);}drawModal();}
+function handleClick(e){const b=e.target.closest('button,[data-menuclose]');if(!b){if(e.target.matches('.overlay'))closeModal();return;}if(b.dataset.menu){$$('sidebar')?.classList.add('mobile-open');$$('nav-shade')?.classList.add('visible');return;}if(b.dataset.menuclose){$$('sidebar')?.classList.remove('mobile-open');$$('nav-shade')?.classList.remove('visible');return;}if(b.dataset.close){closeModal();return;}if(b.dataset.view){navigate(b.dataset.view);return;}if(b.dataset.filter){filter=b.dataset.filter;navigate('curriculum');return;}if(b.dataset.lesson){openLesson(b.dataset.lesson);return;}if(b.dataset.belt){navigate('belt:'+b.dataset.belt);return;}if(b.dataset.exam){examChoice[b.dataset.exam]={};examFeedback=null;modal={type:'exam',id:b.dataset.exam};drawModal();return;}if(b.dataset.checklesson){checkLesson(b.dataset.checklesson);return;}if(b.dataset.submitexam){submitExam(b.dataset.submitexam);return;}if(b.dataset.labjump){scrollToLab(b.dataset.labjump);return;}if(b.dataset.export){exportProgress();return;}if(b.dataset.import){$$('importfile')?.click();return;}if(b.dataset.reset){resetProgress();return;}}
+const basicRender=render;render=function(){if(view.startsWith('belt:')){const id=view.slice(5);$$('app').innerHTML=shell(renderBelt(id));if(modal)drawModal();}else basicRender();};
+document.addEventListener('click',handleClick);
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset.lessonchoice!==undefined){quizSelect(Number(t.dataset.lessonchoice));return;}if(t.dataset.examchoice){const [b,qi,a]=t.dataset.examchoice.split(':');setExamChoice(b,+qi,+a);return;}if(t.dataset.labstep){const [b,i]=t.dataset.labstep.split(':');store.labSteps[b]=store.labSteps[b]||{};store.labSteps[b][i]=t.checked;if(!D.labs[labIndex(b)].steps.every((_,j)=>store.labSteps[b][j]))store.labEvidence[b]=false;save();const scroll=window.scrollY;render();window.scrollTo(0,scroll);return;}if(t.dataset.evidence){const bid=t.dataset.evidence;store.labEvidence[bid]=t.checked;save();const scroll=window.scrollY;render();window.scrollTo(0,scroll);if(t.checked)notify(`${BL[bid].name} practical evidence recorded (self-assessed).`);return;}if(t.id==='importfile'&&t.files?.length){importProgress(t.files[0]);return;}});
+document.addEventListener('input',e=>{const t=e.target;if(t.id==='curriculum-search'){search=t.value;applySearch('lesson-grid',search);}if(t.id==='term-search')applySearch('glossary-grid',t.value);if(t.id==='angle1'){angle1=Number(t.value);drawArm();}if(t.id==='angle2'){angle2=Number(t.value);drawArm();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal)closeModal();});
+render();
+})();
+
+</script>
+</body>
+</html>

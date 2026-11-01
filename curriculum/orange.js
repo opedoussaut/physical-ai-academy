@@ -1,0 +1,44 @@
+(function(){const x=window.PAUpgrade;
+x.extend("orange",[
+ [["Geometric intuition","Position, orientation and pose are distinct. Task-space coordinates represent tool motion; joint space represents actuator configuration. A single tool pose may have multiple inverse-kinematics solutions."],["Numerical checks","Test known home and extreme joint configurations, then compare computed tool positions against a reference model."]],
+ [["Forward versus inverse","Forward kinematics composes known link transforms. Inverse kinematics asks for joint values matching a target and may return zero, one or multiple configurations."],["Workspace boundaries","Reachability depends on joint limits, orientation constraints, self-collision and external obstacles, not only arm length."]],
+ [["Planning versus control","A path is a geometric sequence. A trajectory adds timing, velocity and acceleration. A controller follows the trajectory while correcting errors."],["Safe motion","Joint constraints, jerk, collision clearance and stopping behavior must be checked before execution."]],
+ [["Communication contracts","ROS 2 nodes exchange messages through topics for streams, services for synchronous requests and actions for long-running goals with feedback and cancellation."],["Frames and time","Transforms and joint states must be coherent in time. A frame ID without timestamp or a wrong transform convention can invalidate the result."]]
+],[
+["Two-link forward kinematics by hand","Calculate end-effector position for a planar robot.",[
+["Model","For link lengths L1 and L2 and angles q1 and q2, x=L1 cos(q1)+L2 cos(q1+q2); y=L1 sin(q1)+L2 sin(q1+q2). Angles in numerical libraries are commonly radians."],
+["Interpretation","The second joint orientation is relative to the first. A joint increment can affect every downstream link in the chain."],
+["Validation","Check q1=0, q2=0 gives x=L1+L2 and y=0; check 90° first joint and zero second joint gives x≈0 and y=L1+L2."]],
+"For L1=1 m, L2=0.5 m, q1=0 and q2=90°, the tool position is (1 m, 0.5 m).","Adding joint angles incorrectly can lead to plausible-looking but wrong coordinates.","Calculate five configurations, compare against the academy's interactive two-link arm, and show the equations.",
+"For a 1 m + 0.5 m arm with both joint angles at zero, what is x?",["0.5 m","1.5 m","2.0 m"],1,"Both links point along positive x and add in length.",["modern","mit"]],
+["Inverse kinematics and multiple solutions","Reason about reachability, branch selection and residual error.",[
+["Inverse problem","Given a desired tool pose, solve for joint coordinates. Nonlinear equations can yield elbow-up and elbow-down configurations or no reachable solution."],
+["Reach limits","For a two-link planar arm, radial reach lies approximately between |L1−L2| and L1+L2 before accounting for joint limits and obstacles."],
+["Numerical solvers","Use numerical IK with a reasonable seed and check final pose error, limit compliance and collisions. A mathematical solution need not be an executable solution."]],
+"A planar arm may reach the same point with two elbow configurations. A planner should choose the branch satisfying collision and continuity constraints.","A low numerical IK residual does not prove that a trajectory between configurations is safe.","Plot 2D reach annuli and list at least two poses requiring special care.",
+"Can an inverse-kinematics problem have more than one solution?",["Yes, depending on robot geometry and constraints","Never","Only if sensors fail"],0,"Nonlinear kinematic maps may have multiple inverse branches.",["modern","moveit"]],
+["Jacobians, speed and singularity","Understand local mappings between joint and tool velocity.",[
+["Differential kinematics","The Jacobian J(q) relates joint velocity qdot to tool twist v by v=J(q) qdot. Its columns describe each joint's effect on the tool."],
+["Singularities","When J loses rank, some tool directions are unavailable locally; pseudoinverse solutions can command extreme joint rates near singular configurations."],
+["Mitigation","Damped least-squares methods and path constraints can improve numerical behavior, but do not eliminate underlying mechanical reach limits."]],
+"A fully extended planar elbow can lose one independent instantaneous Cartesian motion direction.","A singularity is a kinematic property, not necessarily a bug in software.","Compute a two-link Jacobian and identify configurations where its determinant is zero.",
+"Why can inverse-Jacobian control be unstable near a singular configuration?",["Required joint speeds may become very large","Mass disappears","ROS topics stop existing"],0,"Small singular values amplify the solution.",["modern","mit"]],
+["Trajectories, interpolation and smoothness","Separate endpoints, paths, time laws and dynamic constraints.",[
+["Interpolation","Linear interpolation in joint space is simple but may not give straight Cartesian tool motion. Cartesian interpolation can require difficult IK along the path."],
+["Motion profiles","Trapezoidal speed and jerk-limited S-curve profiles manage changes in velocity and acceleration. Feasible duration depends on multiple joints."],
+["Verification","Sample the complete trajectory for velocity, acceleration, torque and collisions; endpoint validation alone is insufficient."]],
+"A robot can start and finish at safe poses but sweep through an obstacle mid-trajectory.","A path that avoids collision is not automatically dynamically executable.","Design a trapezoidal speed profile and report peak speed, acceleration, duration and path distance.",
+"Which statement about paths and trajectories is correct?",["A trajectory adds a time parameter to motion","They are always identical","A collision-free path always satisfies motor limits"],0,"Timing imposes further dynamic constraints on a geometric path.",["modern","moveit"]],
+["ROS 2 graph and message patterns","Design ROS 2 communication interfaces for a robot task.",[
+["Topics","A publisher sends streams to subscribers. QoS choices such as reliability, durability and history affect behavior on lossy networks."],
+["Services and actions","Services handle relatively brief requests with responses; actions suit goals that may run longer, provide progress, and be cancelled."],
+["Packages and composition","Nodes may be implemented in Python or C++, packaged and launched together. Separate reusable interfaces from hardware-specific implementations."]],
+"A navigation action returns feedback while a robot drives; a camera publishes images over a topic.","A topic is not a reliable synchronous command/response transaction by default.","Draw nodes and interfaces for camera, tracker, planner, arm controller and status monitor.",
+"Which ROS 2 pattern suits a long-running goal with progress and cancellation?",["A parameter","An action","A static transform alone"],1,"ROS 2 actions support feedback and cancellation for long-running tasks.",["ros"]],
+["Motion planning with obstacles","Understand configuration space, collision tests and probabilistic planners.",[
+["Configuration space","An obstacle in physical space corresponds to forbidden configurations of all joints. The planning problem is not merely moving the TCP around a 3D object."],
+["Planners","Sampling-based methods such as RRT and PRM search configurations; optimization methods improve paths against costs and constraints. Both depend on collision modeling."],
+["Execution checks","Update the planning scene, validate path clearance and monitor the environment while executing. Dynamic objects require replanning or other safeguards."]],
+"A collision-free end-effector route can still place an elbow through a wall; check the full robot geometry.","A plausible RViz path is not evidence that the real robot can execute it.","Compare a naive straight-line joint path with a collision-aware planned path and record clearance.",
+"Why must a planner check full robot collision geometry?",["All links can collide, not only the tool","Only the camera can collide","The TCP contains all inertia"],0,"Robot-body links and attachments sweep through space during movement.",["moveit","modern"]]
+],[],{steps:["Calculate five forward-kinematics poses and compare against a visual check.","Find a target with two IK solutions and explain branch selection.","Produce one path and one time-parameterized trajectory.","Document ROS 2 nodes, topics, services, actions and frame graph.","Test intermediate collision and speed constraints."],criteria:"Correct coordinates and units; path/trajectory distinction; documented collision and timing validation.",duration:"4–6 hours"});})();

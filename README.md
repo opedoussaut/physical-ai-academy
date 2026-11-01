@@ -37,18 +37,19 @@ Each lesson has engineering explanations, a worked example, a common misconcepti
 
 To earn a belt, pass the ten lesson knowledge checks, pass the progressive examination (5/8/10/12/15/18/20 questions by belt, at least 80% correct or 85% for Black), and complete every practical-lab checkpoint before self-declaring the deliverable complete. Practical completion is self-attested; these belts are not an external robotics qualification.
 
-The v2 upgrade preserves previous lesson-check progress but resets earlier five-question exam passes and previously declared labs, because the new requirements are stricter. Progress is saved **locally in your browser** using localStorage. Use the academy's **Progress & data** section to export or import a progress JSON file when changing devices or browsers. There is no login or server-side account.
+**Free access, optional member accounts.** Everyone may browse lessons, attempt exams and explore labs. Visitor progress is temporary and is **not saved** after a refresh. Signed-in members save their progress in a private Supabase account and can resume on other devices. Existing legacy browser progress is offered for explicit one-time import; it is never automatically attached to a member. Members can export/import JSON and delete all saved learning records. The first member release uses email magic links and includes a Google sign-in integration, but full public registration requires the configuration documented in [Supabase setup](supabase/SETUP.md).
 
 ## Hosting and maintenance
 
 - Main site: https://physical-ai-academy.vercel.app/
 - Source repository: https://github.com/opedoussaut/physical-ai-academy
 - The application shell and initial curriculum are in `index.html`. Version 2 extensions are in `curriculum/upgrade-core.js`, seven belt-specific source files, and `curriculum/finish.js`, loaded synchronously before the application starts.
-- Vercel production deploys from the `main` branch. No runtime API keys, paid AI service or backend are required.
+- Vercel production deploys from the `main` branch. The public application uses Supabase Auth and RLS-protected PostgreSQL for members. Only a publishable API key is included in the frontend; never commit service-role credentials.
+- See [Supabase setup and activation checklist](supabase/SETUP.md) and [private schema](supabase/schema.sql). Public email sign-in requires a custom SMTP provider, and optional Google sign-in requires Google OAuth credentials. These are **not yet configured**.
 - The academy uses **vendor-neutral learning objectives and scenarios**. External tools in readings (ROS 2, MoveIt, MuJoCo, Isaac Lab, LeRobot) are examples and official references, not commercial endorsements.
 - Published curriculum is for education; check the original documentation when an API, model or standard changes.
 
-To run locally, open `index.html` in a modern browser or serve the repository with:
+To study lessons locally, serve the repository. Online authentication still redirects to the configured production URL:
 
 ```bash
 python -m http.server 8000

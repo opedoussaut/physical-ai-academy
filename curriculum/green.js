@@ -1,0 +1,44 @@
+(function(){const x=window.PAUpgrade;
+x.extend("green",[
+ [["Perception is uncertain","Calibration, occlusion and sensor noise affect every image- or lidar-based estimate. Detection confidence is not identical to physically validated object pose."],["Grounding","Record sensor frame and acquisition time to express an estimate in the robot planning frame."]],
+ [["Planning with uncertainty","Localization and mapping provide estimates, not the full hidden truth. Plan for uncertainty and update state when new observations arrive."],["Dynamic environment","People and movable objects can invalidate a previously acceptable path; the monitor should detect and react to changes."]],
+ [["Control loops","PID handles error correction, but gains, sample rate, delay and saturation determine practical stability and response. Many robots use nested current, velocity and position loops."],["Evaluation","Measure overshoot, steady-state error, settling time and reaction to disturbances."]],
+ [["Manipulation sequence","Grasp choice, approach, contact, closure, lift and release each have different constraints. Force feedback can reveal failed contact or slippage."],["Recoverability","Predict failure cases and define observable completion criteria before claiming a learned skill works."]]
+],[
+["Camera calibration and 3D geometry","Explain what camera images can and cannot directly measure.",[
+["Projection","An image maps a 3D scene onto a 2D sensor. Camera intrinsics describe focal length and principal point; extrinsics describe pose relative to another frame."],
+["Calibration","Estimate camera parameters using known geometry and quantify reprojection error. An object detection bounding box is not, by itself, a calibrated 6D object pose."],
+["Depth and uncertainty","RGB-D, stereo or multi-view methods infer distance but remain sensitive to reflective surfaces, texture, occlusion and calibration.""]],
+"A detected cup at pixel (320,240) cannot be positioned reliably in robot coordinates without depth/geometry and camera-to-robot calibration.","Pixel confidence and metric pose uncertainty are not interchangeable.","Sketch camera, object and base frames; list each transform and three uncertainty sources.",
+"Why is a camera-to-robot extrinsic calibration needed?",["To transform observations into the robot reference frame","To increase motor torque","To eliminate all sensor noise"],0,"Pose estimates must be expressed in a shared coordinate frame.",["ros","modern"]],
+["Localization, SLAM and mapping","Differentiate odometry, global localization and mapping.",[
+["Odometry","Wheel encoders and inertial sensors estimate relative motion but accumulate error. Slip, wheel radius and integration drift cause position uncertainty."],
+["Localization","Compare live measurements to a known map to estimate pose. A system may fuse lidar, cameras, IMU, wheel odometry and landmarks."],
+["SLAM","Simultaneous localization and mapping estimates both robot trajectory and map from data. Loop closure can reduce accumulated drift but must reject incorrect matches."]],
+"An AMR travelling down a long repetitive corridor may face ambiguous localization without distinguishing landmarks.","A smooth plotted path does not guarantee that localization is accurate.","Draw a sensor-fusion diagram and propose a test where wheel slip causes odometry drift.",
+"What does SLAM estimate jointly?",["Robot pose and environment map","Motor current and battery manufacturing","Only tool center point"],0,"SLAM jointly infers map structure and robot motion.",["ros","mit"]],
+["State estimation and sensor fusion","Build intuition for filters, covariance and delayed observations.",[
+["State model","The system state may include position, velocity, orientation and biases. Process models predict; measurements correct the estimate."],
+["Kalman-family methods","A Kalman filter combines linear-Gaussian predictions and observations; EKF/UKF variants handle certain nonlinear dynamics with assumptions and approximations."],
+["Consistency","Use timestamps, measurement covariance and innovation checks. Overconfident estimates can be more dangerous than visibly uncertain estimates."]],
+"An IMU captures fast short-term motion while lidar provides slower absolute corrections; fusion balances their strengths and uncertainties.","Combining two sensors does not guarantee improvement if they are miscalibrated or correlated incorrectly.","Explain how two sensors with different noise levels should influence an estimated position.",
+"What does covariance represent in state estimation?",["Uncertainty and its correlations","Motor gearbox ratio","Only network bandwidth"],0,"Covariance quantifies statistical estimation uncertainty.",["mit","ros"]],
+["Feedback control and PID tuning","Analyze response rather than memorize the PID acronym.",[
+["Feedback equation","An error e is the difference between reference and measurement. A PID controller combines proportional, accumulated integral and derivative terms, with implementation details such as filtering."],
+["Trade-offs","Higher proportional gain often reduces immediate error but may increase oscillation. Integral action can remove steady bias but risks windup at actuator saturation."],
+["Sampling and stability","Delay, noise, integration method and loop frequency affect achievable stability. Tune and validate with safe bounds and disturbances."]],
+"A position controller overshoots after a large setpoint jump; use a step response and inspect overshoot and settling time before adjusting gains.","A controller that follows a nominal trajectory once is not automatically robust.","Compare step responses for three gains and report overshoot, settling time and steady error.",
+"What is integral windup?",["Accumulated integral command during saturation","A collision between two meshes","A camera exposure problem"],0,"Integral error can build during actuator saturation and cause severe overshoot.",["mit","modern"]],
+["Grasp planning and contact reasoning","Model successful grasping as a physical interaction.",[
+["Grasp geometry","Candidate contact points must respect tool aperture, object geometry, reachability and collision clearance."],
+["Contact physics","Normal force, friction and object mass determine whether a grip resists gravity and disturbance. A visible gripper closure does not prove secure force closure."],
+["Verification","Use lift checks, tactile signals, force estimates or vision. Record object slips, misalignment and release errors rather than only successful grasps."]],
+"A smooth plastic object and rough cardboard box of the same shape can require different grip strategies.","Visual grasp detection can fail when surfaces are slippery, compliant or occluded.","Build a 10-case grasp protocol varying object mass, material and pose; define pass/fail for each.",
+"What can cause failure despite a visually correct grasp pose?",["Insufficient friction or grip force","A correct XML comment","Longer variable names"],0,"Contact mechanics governs whether grasp forces hold the object.",["mujoco","moveit"]],
+["Reactive navigation and human interaction","Plan safe mobile motion with changing obstacles.",[
+["Global and local planning","A global path accounts for map topology; local motion handles the vehicle's current kinematic constraints and observed obstacles."],
+["Dynamic obstacles","People move unpredictably. Systems need detection, conservatism under uncertainty, safe stopping behavior and avoidance of unsafe oscillations."],
+["Recovery","When localization confidence drops or paths remain blocked, define bounded recovery, operator escalation and diagnostic logs."]],
+"An AMR may have a valid planned corridor route but must stop when a pallet unexpectedly blocks the narrow passage.","A successful path-planning computation does not establish safe behavior around people.","Specify a blocked-corridor scenario, local response, retry rules and human escalation criterion.",
+"What should the robot do when the planned path becomes occupied?",["Continue blindly","Reassess, stop or replan under safe constraints","Disable all sensing"],1,"Live perception must inform safe reactive motion.",["ros","nist"]]
+],[],{steps:["Document the transforms from camera to robot base.","Create an uncertainty table for each sensor.","Compare a noisy open-loop and closed-loop response.","Define a grasp evaluation protocol with failure labels.","Present a dynamic obstacle case and a bounded recovery strategy."],criteria:"Calibration assumptions, measurable control response, uncertainty and failure handling are explicit and testable.",duration:"5–7 hours"});})();

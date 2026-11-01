@@ -8,7 +8,7 @@ x.extend("green",[
 ["Camera calibration and 3D geometry","Explain what camera images can and cannot directly measure.",[
 ["Projection","An image maps a 3D scene onto a 2D sensor. Camera intrinsics describe focal length and principal point; extrinsics describe pose relative to another frame."],
 ["Calibration","Estimate camera parameters using known geometry and quantify reprojection error. An object detection bounding box is not, by itself, a calibrated 6D object pose."],
-["Depth and uncertainty","RGB-D, stereo or multi-view methods infer distance but remain sensitive to reflective surfaces, texture, occlusion and calibration.""]],
+["Depth and uncertainty","RGB-D, stereo or multi-view methods infer distance but remain sensitive to reflective surfaces, texture, occlusion and calibration."]],
 "A detected cup at pixel (320,240) cannot be positioned reliably in robot coordinates without depth/geometry and camera-to-robot calibration.","Pixel confidence and metric pose uncertainty are not interchangeable.","Sketch camera, object and base frames; list each transform and three uncertainty sources.",
 "Why is a camera-to-robot extrinsic calibration needed?",["To transform observations into the robot reference frame","To increase motor torque","To eliminate all sensor noise"],0,"Pose estimates must be expressed in a shared coordinate frame.",["ros","modern"]],
 ["Localization, SLAM and mapping","Differentiate odometry, global localization and mapping.",[

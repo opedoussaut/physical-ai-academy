@@ -14,6 +14,14 @@
 @media(max-width:620px){.main{padding:15px 13px 50px}.top-title{font-size:12px}.top-actions .chip{display:none}.hero{border-radius:17px;min-height:300px}.hero-body{padding:27px 23px}.hero-desc{font-size:12px}.metrics{gap:8px}.metric{padding:14px 10px;min-height:80px}.metric-icon{display:none}.metric-number{font-size:24px}.metric-label{font-size:10px}.belt-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.belt-card{padding:15px 12px;min-height:190px}.belt-card h3{font-size:15px}.belt-card p{font-size:10px}.lesson-grid,.lab-grid,.glossary-grid,.source-grid,.next-panel,.joint-playground{grid-template-columns:1fr}.section-head h2{font-size:21px}.page-heading h1{font-size:29px}.modal-content{max-height:none;padding:22px 18px}.overlay{padding:6px}.modal{border-radius:12px}.modal-head{padding:28px 20px}.pipeline-node{font-size:8px;padding:10px 3px}.footer{font-size:9px}.lab-card{padding:20px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+
+/* Free member account forms */
+.member-form{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px;margin:17px 0 10px}
+.member-form label{font-size:13px;font-weight:700;color:#2c4662;flex-basis:100%;margin-bottom:-3px}
+.member-form input{flex:1;min-width:200px;min-height:43px;border:1px solid #c9d6e5;border-radius:10px;padding:10px 12px;background:#fff;color:#112945}
+.member-form input:focus-visible{outline:3px solid #b1d4ff;outline-offset:1px}
+.member-form .button{min-height:43px}
+@media(max-width:700px){.member-form input,.member-form .button{flex-basis:100%}}
 </style>
 </head>
 <body>
@@ -1932,7 +1940,8 @@ const save=()=>{
  if(saveTimer)clearTimeout(saveTimer);
  saveTimer=setTimeout(()=>{saveTimer=null;member.persist(store);},450);
 };
-function onAccountChange(remote,user){
+function onAccountChange(remote,user,eventType){
+ if(eventType==='state'){if(view==='settings')render();return;}
  if(saveTimer){clearTimeout(saveTimer);saveTimer=null;}
  const valid=remote&&remote.version===2&&remote.completed&&remote.examPass;
  store=user&&valid?{...defaults(),...remote}:defaults();
@@ -2011,7 +2020,7 @@ function setExamChoice(bid,qi,ai){examChoice[bid]=examChoice[bid]||{};examChoice
 function submitExam(bid){const ex=D.exams[bid],responses=examChoice[bid]||{};if(Object.keys(responses).length!==ex.questions.length)return;const score=ex.questions.filter((q,i)=>responses[i]===q.answer).length,passed=score>=ex.passing; if(passed){store.examPass[bid]=true;save();}examFeedback={score,passed,mistakes:ex.questions.map((q,i)=>({q:i+1,why:q.why,correct:responses[i]===q.answer})).filter(x=>!x.correct)};drawModal();if(passed)notify(`${BL[bid].name} exam passed. Complete all requirements to earn the belt.`);}
 function quizSelect(i){quizChoice=i;quizFeedback=null;drawModal();}
 function checkLesson(id){const l=D.lessons.find(x=>x.id===id);if(!l||quizChoice===null)return;const ok=quizChoice===l.answer;quizFeedback={ok};if(ok){store.completed[id]=true;save();notify(`${l.title}: knowledge check passed.`);}drawModal();}
-function handleClick(e){const b=e.target.closest('button,[data-menuclose]');if(!b){if(e.target.matches('.overlay'))closeModal();return;}if(b.dataset.menu){$$('sidebar')?.classList.add('mobile-open');$$('nav-shade')?.classList.add('visible');return;}if(b.dataset.menuclose){$$('sidebar')?.classList.remove('mobile-open');$$('nav-shade')?.classList.remove('visible');return;}if(b.dataset.close){closeModal();return;}if(b.dataset.view){navigate(b.dataset.view);return;}if(b.dataset.filter){filter=b.dataset.filter;navigate('curriculum');return;}if(b.dataset.lesson){openLesson(b.dataset.lesson);return;}if(b.dataset.belt){navigate('belt:'+b.dataset.belt);return;}if(b.dataset.exam){examChoice[b.dataset.exam]={};examFeedback=null;modal={type:'exam',id:b.dataset.exam};drawModal();return;}if(b.dataset.checklesson){checkLesson(b.dataset.checklesson);return;}if(b.dataset.submitexam){submitExam(b.dataset.submitexam);return;}if(b.dataset.labjump){scrollToLab(b.dataset.labjump);return;}if(b.dataset.memberSignout){member.signOut().catch(member.report);return;}
+function handleClick(e){const b=e.target.closest('button,[data-menuclose]');if(!b){if(e.target.matches('.overlay'))closeModal();return;}if(b.dataset.menu){$$('sidebar')?.classList.add('mobile-open');$$('nav-shade')?.classList.add('visible');return;}if(b.dataset.menuclose){$$('sidebar')?.classList.remove('mobile-open');$$('nav-shade')?.classList.remove('visible');return;}if(b.dataset.close){closeModal();return;}if(b.dataset.view){navigate(b.dataset.view);return;}if(b.dataset.filter){filter=b.dataset.filter;navigate('curriculum');return;}if(b.dataset.lesson){openLesson(b.dataset.lesson);return;}if(b.dataset.belt){navigate('belt:'+b.dataset.belt);return;}if(b.dataset.exam){examChoice[b.dataset.exam]={};examFeedback=null;modal={type:'exam',id:b.dataset.exam};drawModal();return;}if(b.dataset.checklesson){checkLesson(b.dataset.checklesson);return;}if(b.dataset.submitexam){submitExam(b.dataset.submitexam);return;}if(b.dataset.labjump){scrollToLab(b.dataset.labjump);return;}if(b.dataset.memberSignout){if(saveTimer){clearTimeout(saveTimer);saveTimer=null;member.persist(store);}member.signOut().catch(member.report);return;}
 if(b.dataset.memberGoogle){member.google().catch(member.report);return;}
 if(b.dataset.memberLegacy){if(!member.state.user||!legacyProgress)return;if(!confirm('Replace this account\'s existing cloud progress with the progress found in this browser?'))return;store={...defaults(),...legacyProgress};save();render();notify('Previous progress imported into your account.');return;}
 if(b.dataset.memberDelete){if(!confirm('Permanently delete your saved progress AND training experiment records? This cannot be undone.'))return;member.deleteProgress().then(()=>{store=defaults();render();notify('Saved progress deleted.');}).catch(member.report);return;}

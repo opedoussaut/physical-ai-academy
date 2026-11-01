@@ -2,7 +2,8 @@
 (function(){
 "use strict";
 const D=window.__ACADEMY_DATA__;
-const codes={white:"wh",yellow:"ye",orange:"or",green:"gr",blue:"bl",brown:"br",black:"bl"};
+const codes={white:"wh",yellow:"ye",orange:"or",green:"gr",blue:"bl",brown:"br",black:"bk"};
+D.lessons.filter(l=>l.belt==="black").forEach((l,i)=>{l.id="bk-"+String(i+1).padStart(2,"0")});
 const grade={white:5,yellow:8,orange:10,green:12,blue:15,brown:18,black:20};
 const minutes={white:45,yellow:55,orange:65,green:65,blue:75,brown:85,black:95};
 let issues=[];

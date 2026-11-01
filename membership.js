@@ -8,7 +8,7 @@
   const state = { ready:false, user:null, loading:true, message:'', error:'', syncing:false, emailSent:false, pendingEmail:'' };
   let client=null, listener=()=>{}, generation=0, saveChain=Promise.resolve();
   const explain = e => e && e.message ? e.message : String(e || 'Unexpected error');
-  const announce = () => {try{listener();}catch(e){console.warn('UI refresh error',e);}};
+  const announce = () => {try{listener(null,null,'state');}catch(e){console.warn('UI refresh error',e);}};
   const fail = e => {state.error=explain(e);state.message='';announce();};
   function create(){
     if(!global.supabase || typeof global.supabase.createClient !== 'function'){
@@ -39,8 +39,8 @@
     try{
       create();
       const {data:{subscription}}=client.auth.onAuthStateChange((event,session)=>{
-        if(event==='INITIAL_SESSION')return;
-        if(event==='TOKEN_REFRESHED')return;
+        if(event==='INITIAL_SESSION'||event==='TOKEN_REFRESHED')return;
+        if((session?.user?.id||null)===(state.user?.id||null)&&!state.loading&&state.ready)return;
         // Defer database queries until after the Auth callback has returned.
         setTimeout(()=>handleSession(session?.user||null),0);
       });
@@ -94,19 +94,21 @@
     const payload=JSON.parse(JSON.stringify(progress));
     saveChain=saveChain.catch(()=>{}).then(async()=>{
       if(!state.user||state.user.id!==userId) return false;
-      state.syncing=true;state.error='';announce();
+      state.syncing=true;state.error='';
       const {error}=await client.from('academy_progress').upsert({
         user_id:userId,progress:payload,updated_at:new Date().toISOString()
       },{onConflict:'user_id'});
       state.syncing=false;
       if(error){fail(error);return false;}
-      announce();return true;
+      return true;
     });
     return saveChain;
   }
   async function deleteProgress(){
     if(!client||!state.user)throw new Error('Sign in to delete your progress.');
     await saveChain.catch(()=>{});
+    const {error:experimentsError}=await client.from('academy_training_runs').delete().eq('user_id',state.user.id);
+    if(experimentsError)throw experimentsError;
     const {error}=await client.from('academy_progress').delete().eq('user_id',state.user.id);
     if(error)throw error;
     return true;
